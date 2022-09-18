@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@frontends/footer": ["libs/footer/src/index.js"],
+      "@frontends/header": ["libs/header/src/index.js"],
+      "@frontends/header-header": ["libs/header/header/src/index.js"],
       "@frontends/s7css-s7css": ["libs/s7css/s7css/src/index.js"]
     }
   },

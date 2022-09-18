@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "deliciousreverie": "apps/deliciousreverie",
-    "s7css-s7css": "libs/s7css/s7css"
+    "footer": "libs/footer",
+    "header": "libs/header"
   }
 }

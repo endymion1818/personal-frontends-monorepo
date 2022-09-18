@@ -6,7 +6,10 @@
     "build": {
       "outputs": ["dist/apps/deliciousreverie"],
       "executor": "@nxtensions/astro:build",
-      "options": {}
+      "options": {},
+      "assets": [
+        "netlify.toml"
+      ]
     },
     "dev": {
       "executor": "@nxtensions/astro:dev",

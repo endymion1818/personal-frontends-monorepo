@@ -5,17 +5,21 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "postinstall": "node ./tools/scripts/patch-nx-cli.js"
   },
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "@astrojs/svelte": "^1.0.0",
     "@nrwl/cli": "14.7.5",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "14.7.5",
     "@nxtensions/astro": "^2.3.0",
+    "astro": "~1.0.0-beta.56",
     "nx": "14.7.5",
     "prettier": "^2.6.2",
+    "svelte": "^3.46.4",
     "typescript": "~4.8.2"
   }
 }

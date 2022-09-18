@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "deliciousreverie": "apps/deliciousreverie",
+    "s7css-s7css": "libs/s7css/s7css"
+  }
 }

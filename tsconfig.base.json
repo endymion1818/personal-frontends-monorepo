@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@frontends/s7css-s7css": ["libs/s7css/s7css/src/index.js"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

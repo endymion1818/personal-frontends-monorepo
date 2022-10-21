@@ -1,6 +1,13 @@
 ---
+import { Header } from '@frontends/header'
+
 let title = 'deliciousreverie';
 
+let menuItems = [{
+  title: 'about',
+  link: '/about',
+}]
+let logo = null
 ---
 <html lang="en">
 <head>
@@ -15,12 +22,10 @@ let title = 'deliciousreverie';
 </head>
 
 <body>
-  <main>
-    <header>
-      <div>
-        <h1 class="px-2">Welcome to {title}!</h1>
-      </div>
-    </header>
+  <main class="w-screen">
+    <div class="container">
+      <Header title={title} menuItems={menuItems} />
+    </div>
   </main>
 </body>
 </html>

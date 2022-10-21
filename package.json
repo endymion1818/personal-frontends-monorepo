@@ -19,6 +19,7 @@
     "@nxtensions/astro": "^2.3.0",
     "astro": "~1.0.0-beta.56",
     "autoprefixer": "^10.4.12",
+    "daisyui": "^2.33.0",
     "nx": "14.7.5",
     "postcss": "^8.4.18",
     "prettier": "^2.6.2",

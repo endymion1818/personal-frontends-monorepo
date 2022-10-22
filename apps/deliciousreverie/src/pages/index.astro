@@ -1,5 +1,6 @@
 ---
 import { Header } from '@frontends/header'
+import { Footer } from '@frontends/footer'
 
 let title = 'deliciousreverie';
 let subtitle = "blog of developer & bookworm benjamin read"
@@ -8,6 +9,17 @@ let menuItems = [{
   title: 'about',
   link: '/about',
 }]
+
+let footerMenuItems = [{
+  title: 'Menu',
+  items: [{
+    title: 'About',
+    link: '/about'
+  }]
+}]
+
+let acknowledgementText = "Delicious Reverie is the blog of developer & bookworm benjamin read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind and DaisyUI and Svelte. Hosted by Netlify. © Some rights are reserved. This site doesn't use any cookies or other session storage and has no tracking scripts."
+
 let logo = null
 ---
 <html lang="en">
@@ -26,6 +38,8 @@ let logo = null
   <main class="w-screen">
     <div class="container">
       <Header title={title} menuItems={menuItems} subtitle={subtitle} />
+      <main style={{ height: '60vh' }}></main>
+        <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} />
     </div>
   </main>
 </body>

@@ -57,7 +57,7 @@ const { data } = await response.json();
   <title>{title}</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/styles/global.css">
-  <link rel="stylesheet" href="/styles/home.css">
+  <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />
   <SEO title={title} description={subtitle} />
 </head>
 <body>
@@ -65,7 +65,7 @@ const { data } = await response.json();
     <Header title={title} menuItems={menuItems} subtitle={subtitle} />
     <main class="container">
       {data?.listPosts?.data.length ? (
-          <div class="inline-grid grid-cols-1 gap-4 py-4">
+          <div class="grid grid-cols-1 gap-4 py-4">
             {data?.listPosts?.data.map(post => (
               <ArticleCard post={post}/>
             ))}

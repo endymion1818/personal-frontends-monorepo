@@ -13,18 +13,18 @@ interface Props {
 
 const { post } = Astro.props
 ---
-<article class="card w-96 bg-base-100 shadow-xl">
+<article class="card bg-base-100 shadow-xl">
   {post.shareCard && (
     <figure><img src={post.shareCard} alt="Shoes" /></figure>
   )}
   <div class="card-body">
-    <h2 class="card-title">
+    <h2 class="card-title text-inherit">
       {post.title}
-      <div class="badge badge-secondary">NEW</div>
     </h2>
-    <p>{post.description}</p>
+    <p class="text-inherit">{post.description}</p>
     {post.tags.length ? (
       <div class="card-actions justify-end">
+        <span>This article is about:</span>
         {post.tags.map(tag => (
           <a href={tag.slug} class="badge badge-outline">{tag.title}</a>
         ))}

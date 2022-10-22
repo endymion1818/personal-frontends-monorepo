@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Lovechild';
+  src: url('/fonts/Lovechild-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +25,15 @@
     0.4626rem + 1.0309vw + var(--user-font-scale),
     1.125rem
   );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lovechild';
 }
 
 body {

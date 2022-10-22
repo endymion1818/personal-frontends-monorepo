@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@frontends/article-card": ["libs/article-card/src/index.js"],
       "@frontends/footer": ["libs/footer/src/index.js"],
       "@frontends/header": ["libs/header/src/index.js"],
       "@frontends/header-header": ["libs/header/header/src/index.js"],

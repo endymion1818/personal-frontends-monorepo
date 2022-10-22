@@ -2,6 +2,8 @@
 import { SEO } from 'astro-seo'
 import { Header } from '@frontends/header'
 import { Footer } from '@frontends/footer'
+import { ArticleCard } from '@frontends/article-card'
+
 import {
   title,
   subtitle,
@@ -48,7 +50,7 @@ const response = await fetch(
 const { data } = await response.json();
 
 ---
-<html lang="en">
+<html lang="en" data-theme="retro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -65,25 +67,7 @@ const { data } = await response.json();
       {data?.listPosts?.data.length ? (
           <div class="inline-grid grid-cols-1 gap-4 py-4">
             {data?.listPosts?.data.map(post => (
-              <article class="card w-96 bg-base-100 shadow-xl">
-                {post.shareCard && (
-                  <figure><img src={post.shareCard} alt="Shoes" /></figure>
-                )}
-                <div class="card-body">
-                  <h2 class="card-title">
-                    {post.title}
-                    <div class="badge badge-secondary">NEW</div>
-                  </h2>
-                  <p>{post.description}</p>
-                  {post.tags.length ? (
-                    <div class="card-actions justify-end">
-                      {post.tags.map(tag => (
-                        <a href={tag.slug} class="badge badge-outline">{tag.title}</a>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </article>
+              <ArticleCard post={post}/>
             ))}
           </div>
         ) : null}

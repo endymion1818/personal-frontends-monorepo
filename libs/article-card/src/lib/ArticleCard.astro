@@ -1,0 +1,34 @@
+---
+interface Props {
+  post: {
+    title: string
+    shareCard: string
+    description: string
+    tags: Array<{
+      slug: string
+      title: string
+    }>
+  }
+}
+
+const { post } = Astro.props
+---
+<article class="card w-96 bg-base-100 shadow-xl">
+  {post.shareCard && (
+    <figure><img src={post.shareCard} alt="Shoes" /></figure>
+  )}
+  <div class="card-body">
+    <h2 class="card-title">
+      {post.title}
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>{post.description}</p>
+    {post.tags.length ? (
+      <div class="card-actions justify-end">
+        {post.tags.map(tag => (
+          <a href={tag.slug} class="badge badge-outline">{tag.title}</a>
+        ))}
+      </div>
+    ) : null}
+  </div>
+</article>

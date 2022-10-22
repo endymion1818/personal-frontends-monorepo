@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "article-card": "libs/article-card",
     "deliciousreverie": "apps/deliciousreverie",
     "footer": "libs/footer",
     "header": "libs/header"

@@ -8,7 +8,8 @@ import {
   logo,
   menuItems,
   footerMenuItems,
-  acknowledgementText } from '../../sitedata';
+  acknowledgementText,
+  socialLinks } from '../../sitedata';
 const response = await fetch(
     process.env.WEBINY_READ_URL,
   {
@@ -62,7 +63,7 @@ const { data } = await response.json();
     <Header title={title} menuItems={menuItems} subtitle={subtitle} />
     <main class="container">
       {data?.listPosts?.data.length ? (
-          <div class="inline-grid grid-cols-3 gap-4 py-4">
+          <div class="inline-grid grid-cols-1 gap-4 py-4">
             {data?.listPosts?.data.map(post => (
               <article class="card w-96 bg-base-100 shadow-xl">
                 {post.shareCard && (
@@ -87,7 +88,7 @@ const { data } = await response.json();
           </div>
         ) : null}
     </main>
-    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} />
+    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks }/>
   </main>
 </body>
 </html>

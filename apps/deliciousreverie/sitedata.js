@@ -30,15 +30,17 @@ export let acknowledgementText = "Delicious Reverie is the blog of developer & b
 
 export let logo = null
 
-export let socialLinks = [
-  {
+export let socialLinks = {
+  twitter: {
     title: "twitter",
     link: "https://www.twitter.com/muzzlehatch_"
-  }, {
+  },
+  reddit: {
     title: "reddit",
     link: "https://www.reddit.com/u/endymion1818-1819"
-  }, {
+  },
+  youtube: {
     title: "youtube",
     link: "https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ"
   }
-]
+}

@@ -18,7 +18,7 @@ let footerMenuItems = [{
   }]
 }]
 
-let acknowledgementText = "Delicious Reverie is the blog of developer & bookworm benjamin read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind and DaisyUI and Svelte. Hosted by Netlify. © Some rights are reserved. This site doesn't use any cookies or other session storage and has no tracking scripts."
+let acknowledgementText = "Delicious Reverie is the blog of developer & bookworm benjamin read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind, DaisyUI and Svelte. Hosted by Netlify. © Some rights are reserved. This site doesn't use any cookies or other session storage and has no tracking scripts."
 
 let logo = null
 ---
@@ -27,20 +27,16 @@ let logo = null
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>{title}</title>
-
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
   <link rel="stylesheet" href="/styles/global.css">
   <link rel="stylesheet" href="/styles/home.css">
 </head>
 
 <body>
   <main class="w-screen">
-    <div class="container">
-      <Header title={title} menuItems={menuItems} subtitle={subtitle} />
-      <main style={{ height: '60vh' }}></main>
-        <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} />
-    </div>
+    <Header title={title} menuItems={menuItems} subtitle={subtitle} />
+    <main style={{ height: '60vh' }}></main>
+    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} />
   </main>
 </body>
 </html>

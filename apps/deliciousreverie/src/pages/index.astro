@@ -1,26 +1,51 @@
 ---
+import { SEO } from 'astro-seo'
 import { Header } from '@frontends/header'
 import { Footer } from '@frontends/footer'
+import {
+  title,
+  subtitle,
+  logo,
+  menuItems,
+  footerMenuItems,
+  acknowledgementText } from '../../sitedata';
+const response = await fetch(
+    process.env.WEBINY_READ_URL,
+  {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.WEBINY_ACCESS_TOKEN}`,
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({
+      query: `
+        {
+          listPosts {
+            data {
+              id
+              title
+              slug
+              description
+              body
+              publishDate
+              shareCard
+              tags {
+                title
+                slug
+              }
+            }
+            error {
+              message
+            }
+          }
+        }
+      `,
+      variables: {},
+    }),
+  }
+);
+const { data } = await response.json();
 
-let title = 'deliciousreverie';
-let subtitle = "blog of developer & bookworm benjamin read"
-
-let menuItems = [{
-  title: 'about',
-  link: '/about',
-}]
-
-let footerMenuItems = [{
-  title: 'Menu',
-  items: [{
-    title: 'About',
-    link: '/about'
-  }]
-}]
-
-let acknowledgementText = "Delicious Reverie is the blog of developer & bookworm benjamin read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind, DaisyUI and Svelte. Hosted by Netlify. © Some rights are reserved. This site doesn't use any cookies or other session storage and has no tracking scripts."
-
-let logo = null
 ---
 <html lang="en">
 <head>
@@ -30,12 +55,38 @@ let logo = null
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/styles/global.css">
   <link rel="stylesheet" href="/styles/home.css">
+  <SEO title={title} description={subtitle} />
 </head>
-
 <body>
   <main class="w-screen">
     <Header title={title} menuItems={menuItems} subtitle={subtitle} />
-    <main style={{ height: '60vh' }}></main>
+    <main class="container">
+      {data?.listPosts?.data.length ? (
+          <div class="inline-grid grid-cols-3 gap-4 py-4">
+            {data?.listPosts?.data.map(post => (
+              <article class="card w-96 bg-base-100 shadow-xl">
+                {post.shareCard && (
+                  <figure><img src={post.shareCard} alt="Shoes" /></figure>
+                )}
+                <div class="card-body">
+                  <h2 class="card-title">
+                    {post.title}
+                    <div class="badge badge-secondary">NEW</div>
+                  </h2>
+                  <p>{post.description}</p>
+                  {post.tags.length ? (
+                    <div class="card-actions justify-end">
+                      {post.tags.map(tag => (
+                        <a href={tag.slug} class="badge badge-outline">{tag.title}</a>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : null}
+    </main>
     <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} />
   </main>
 </body>

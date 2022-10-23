@@ -1,4 +1,4 @@
-import Logo from "./public/assets/logo.svg"
+import Logo from "./src/components/logo.svg"
 
 export let title = 'Delicious Reverie';
 export let subtitle = "blog of developer & bookworm benjamin read"

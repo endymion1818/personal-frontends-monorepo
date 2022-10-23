@@ -5,6 +5,7 @@
     "article-card": "libs/article-card",
     "deliciousreverie": "apps/deliciousreverie",
     "footer": "libs/footer",
-    "header": "libs/header"
+    "header": "libs/header",
+    "rich-text-renderer": "libs/rich-text-renderer"
   }
 }

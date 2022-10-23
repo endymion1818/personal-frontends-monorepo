@@ -54,8 +54,9 @@ const { data } = Astro.props
   ))}
 </>
 
-<style>
-  p > a {
+<style global>
+  p.text-prose > a {
     text-decoration: underline;
+    text-decoration-skip-ink: auto;
   }
 </style>

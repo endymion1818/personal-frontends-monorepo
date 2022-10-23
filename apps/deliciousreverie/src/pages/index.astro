@@ -1,17 +1,6 @@
 ---
-import { SEO } from 'astro-seo'
-import { Header } from '@frontends/header'
-import { Footer } from '@frontends/footer'
 import { ArticleCard } from '@frontends/article-card'
-
-import {
-  title,
-  subtitle,
-  logo,
-  menuItems,
-  footerMenuItems,
-  acknowledgementText,
-  socialLinks } from '../../sitedata';
+import Layout from '../components/Layout.astro'
 
 const response = await fetch(
     process.env.WEBINY_READ_URL,
@@ -43,43 +32,26 @@ const response = await fetch(
             }
           }
         }
-      `,
-      variables: {},
+      `
     }),
   }
 );
 const { data } = await response.json();
-
 ---
-<html lang="en" data-theme="mytheme">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>{title}</title>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="/styles/global.css">
-  <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />
-  <SEO title={title} description={subtitle} />
-</head>
-<body class="bg-secondary">
-  <div class="w-screen">
-    <Header title={title} menuItems={menuItems} subtitle={subtitle} logo={logo} />
-    <main class="container max-w-screen-sm">
-      <div class="my-5">
-        <h2 class="text-2xl">Thanks for popping round!</h2>
-        <p class="mb-2">Delicious Reverie is a blog mostly about web development and JavaScript engineering. But it's my personal playground and learning journal too. I hope you find something that inspires or helps you.</p>
-        <p class="mb-4"><a href="/contact">Drop me a message</a> if you'd like to say hi, if you're looking for some help, or if I got something wrong.</p>
-        <h2 class="text-xl">Latest 5 Posts:</h2>
-      </div>
-      {data?.listPosts?.data.length ? (
-          <div class="grid grid-cols-1 gap-4 py-4">
-            {data?.listPosts?.data.map(post => (
-              <ArticleCard post={post}/>
-            ))}
-          </div>
-        ) : null}
-    </main>
-    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } logo={logo}/>
-  </div>
-</body>
-</html>
+<Layout pageTitle="home">
+  <main class="container max-w-screen-sm">
+    <div class="my-5">
+      <h2 class="text-2xl">Thanks for popping round!</h2>
+      <p class="mb-2">Delicious Reverie is a blog mostly about web development and JavaScript engineering. But it's my personal playground and learning journal too. I hope you find something that inspires or helps you.</p>
+      <p class="mb-4"><a href="/contact">Drop me a message</a> if you'd like to say hi, if you're looking for some help, or if I got something wrong.</p>
+      <h2 class="text-xl">Latest 5 Posts:</h2>
+    </div>
+    {data?.listPosts?.data.length ? (
+        <div class="grid grid-cols-1 gap-4 py-4">
+          {data?.listPosts?.data.map(post => (
+            <ArticleCard post={post}/>
+          ))}
+        </div>
+      ) : null}
+  </main>
+</Layout>

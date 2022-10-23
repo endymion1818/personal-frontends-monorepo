@@ -13,7 +13,7 @@ interface Props {
 const {menuItems, logo, title, subtitle } = Astro.props;
 ---
 <header class="bg-accent">
-  <div class=" max-w-screen-sm mx-auto">
+  <div class=" max-w-screen-md mx-auto">
     <div class="header--top py-11 px-4 text-white">
       <a class="header--logo normal-case text-xl hover:text-underline">
       {logo ? (
@@ -25,7 +25,7 @@ const {menuItems, logo, title, subtitle } = Astro.props;
       {subtitle && <p class="font-display text-2xl">{subtitle}</p>}
     </div>
   </div>
-  <div class="navbar max-w-screen-sm mx-auto flex-1 justify-start">
+  <div class="navbar max-w-screen-md mx-auto flex-1 justify-start">
     {menuItems?.length ? (
       <ul class="header--navigation">
         {menuItems.map(item => (

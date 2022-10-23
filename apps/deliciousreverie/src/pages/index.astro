@@ -12,6 +12,7 @@ import {
   footerMenuItems,
   acknowledgementText,
   socialLinks } from '../../sitedata';
+
 const response = await fetch(
     process.env.WEBINY_READ_URL,
   {
@@ -23,7 +24,7 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listPosts {
+          listPosts(limit: 5) {
             data {
               id
               title
@@ -50,7 +51,7 @@ const response = await fetch(
 const { data } = await response.json();
 
 ---
-<html lang="en" data-theme="retro">
+<html lang="en" data-theme="mytheme">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -61,9 +62,15 @@ const { data } = await response.json();
   <SEO title={title} description={subtitle} />
 </head>
 <body>
-  <main class="w-screen">
-    <Header title={title} menuItems={menuItems} subtitle={subtitle} />
-    <main class="container">
+  <div class="w-screen">
+    <Header title={title} menuItems={menuItems} subtitle={subtitle} logo={logo} />
+    <main class="container max-w-screen-sm">
+      <div class="my-5">
+        <h2 class="text-2xl">Thanks for popping round!</h2>
+        <p class="mb-2">Delicious Reverie is a blog mostly about web development and JavaScript engineering. But it's my personal playground and learning journal too. I hope you find something that inspires or helps you.</p>
+        <p class="mb-4"><a href="/contact">Drop me a message</a> if you'd like to say hi, if you're looking for some help, or if I got something wrong.</p>
+        <h2 class="text-xl">Latest 5 Posts:</h2>
+      </div>
       {data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4 py-4">
             {data?.listPosts?.data.map(post => (
@@ -72,7 +79,7 @@ const { data } = await response.json();
           </div>
         ) : null}
     </main>
-    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks }/>
-  </main>
+    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } logo={logo}/>
+  </div>
 </body>
 </html>

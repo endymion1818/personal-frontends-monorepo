@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Lovechild';
-  src: url('/fonts/lovechild.woff') format('woff');
+  src: url('/fonts/Lovechild-Regular.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -43,11 +43,4 @@ body {
   justify-content: center;
   background: #f9fafb;
   color: #111827;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #111827;
-    color: #fff;
-  }
 }

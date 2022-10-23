@@ -4,6 +4,7 @@ interface Props {
     title: string
     shareCard: string
     description: string
+    slug: string
     tags: Array<{
       slug: string
       title: string
@@ -15,15 +16,15 @@ const { post } = Astro.props
 ---
 <article class="card bg-base-100 shadow-xl">
   {post.shareCard && (
-    <figure><img src={post.shareCard} alt="Shoes" /></figure>
+    <a href={post.slug}><figure><img src={post.shareCard} alt="Shoes" /></figure></a>
   )}
   <div class="card-body">
     <h2 class="card-title text-inherit">
-      {post.title}
+      <a href={post.slug}>{post.title}</a>
     </h2>
     <p class="text-inherit">{post.description}</p>
     {post.tags.length ? (
-      <div class="card-actions justify-end">
+      <div class="card-actions justify-end items-center">
         <span>This article is about:</span>
         {post.tags.map(tag => (
           <a href={tag.slug} class="badge badge-outline">{tag.title}</a>

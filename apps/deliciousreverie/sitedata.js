@@ -1,9 +1,17 @@
-export let title = 'deliciousreverie';
+import Logo from "./public/assets/logo.svg"
+
+export let title = 'Delicious Reverie';
 export let subtitle = "blog of developer & bookworm benjamin read"
 
 export let menuItems = [{
-  title: 'about',
+  title: 'Home',
+  link: '/',
+}, {
+  title: 'About',
   link: '/about',
+}, {
+  title: 'Contact',
+  link: '/contact',
 }]
 
 export let footerMenuItems = [{
@@ -28,7 +36,7 @@ export let footerMenuItems = [{
 
 export let acknowledgementText = "Delicious Reverie is the blog of developer & bookworm benjamin read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind, DaisyUI and Svelte. Hosted by Netlify. © Some rights are reserved. This site doesn't use any cookies or other session storage and has no tracking scripts."
 
-export let logo = null
+export let logo = Logo
 
 export let socialLinks = {
   twitter: {

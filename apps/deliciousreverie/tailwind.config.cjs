@@ -8,9 +8,21 @@ module.exports = {
     container: {
       center: true,
     },
+    fontFamily: {
+      'display': ['Lovechild'],
+    }
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["retro", "coffee"],
+    themes: [
+      {
+        mytheme: {
+          primary: "#333",
+          secondary: "#f7ebc1",
+          accent: "#331f33",
+        },
+      },
+      "luxury",
+    ],
   },
 }

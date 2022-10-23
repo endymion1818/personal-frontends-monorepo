@@ -12,20 +12,26 @@ interface Props {
 
 const {menuItems, logo, title, subtitle } = Astro.props;
 ---
-<header class="navbar bg-base-100">
-  <div class="flex-none">
-    <div>
-      <a class="btn btn-ghost normal-case text-xl hover:bg-white hover:text-slate-800">
-      {logo ? <img src={logo}> : <span>{title || null}</span>}
-    </a>
-    {subtitle && <p class="text-base">{subtitle}</p>}
-  </div>
+<header class="bg-accent">
+  <div class=" max-w-screen-sm mx-auto">
+    <div class="header--top py-11 px-4 text-white">
+      <a class="header--logo normal-case text-xl hover:text-underline">
+      {logo ? (
+        <img class="w-4/5" src={logo}>
+        ) : (
+          <span class="font-display">{title || null}</span>
+      )}
+      </a>
+      {subtitle && <p class="font-display text-2xl">{subtitle}</p>}
     </div>
-  <div class="flex-1 justify-end">
+  </div>
+  <div class="navbar max-w-screen-sm mx-auto flex-1 justify-start">
     {menuItems?.length ? (
-      <ul>
+      <ul class="header--navigation">
         {menuItems.map(item => (
-          <li class="text-base"><a class="btn btn-ghost" href={item.link}>{item.title}</a></li>
+          <li class="text-white">
+            <a class="btn btn-ghost normal-case" href={item.link}>{item.title}</a>
+          </li>
         ))}
       </ul>
     ): null }

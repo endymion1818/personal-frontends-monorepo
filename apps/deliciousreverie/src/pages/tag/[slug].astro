@@ -1,0 +1,57 @@
+---
+import { RichTextRenderer } from "@frontends/rich-text-renderer"
+import Layout from '../../components/Layout.astro'
+
+export async function getStaticPaths() {
+  const data = await fetch(
+    process.env.WEBINY_READ_URL,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.WEBINY_ACCESS_TOKEN}`,
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+        query: `
+          {
+            listPosts {
+              data {
+                id
+                title
+                slug
+                description
+                body
+                publishDate
+                shareCard
+                tags {
+                  title
+                  slug
+                }
+              }
+              error {
+                message
+              }
+            }
+          }
+        `,
+      }),
+    }
+  ).then (
+    response => response.json()
+  )
+
+  return data.data.listPosts.data.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+}
+const { post } = Astro.props;
+---
+<Layout pageTitle="home" pageDescription={post.description}>
+  <main class="container max-w-screen-sm py-20">
+    <h1 class="text-2xl">{post.title}</h1>
+    <RichTextRenderer data={post.body} />
+  </main>
+</Layout>

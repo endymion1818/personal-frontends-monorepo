@@ -1,0 +1,79 @@
+---
+import Layout from '../../components/Layout.astro'
+
+interface DataProps {
+    listPosts: {
+      data: Array<{
+        id: string
+        title: string
+        slug: string
+        description: string
+        tags: Array<{
+          title: string
+          slug: string
+        }>
+      }>
+    }
+  }
+
+const response = await fetch(
+    process.env.WEBINY_READ_URL,
+  {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.WEBINY_ACCESS_TOKEN}`,
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({
+      query: `
+        {
+          listPosts {
+            data {
+              id
+              title
+              slug
+              description
+              tags {
+                title
+                slug
+              }
+            }
+          }
+        }
+      `
+    }),
+  }
+);
+const { data } = await response.json();
+
+let accumulatedTags = []
+
+const formattedTags: DataProps = data.listPosts.data.reduce(
+  (previousValue, currentValue) => {
+    accumulatedTags.push(currentValue.tags)
+  },
+  []
+);
+
+const formattedTagsFlat = accumulatedTags.flat()
+
+console.log('formattedTagsFlat', formattedTagsFlat);
+
+const uniqueTags = formattedTagsFlat.filter((element, index, array) => {
+    if (element.tags.has(array.tags)) {
+        item.tags.delete(item);
+    } else {
+        return item;
+    }
+})
+
+console.log('uniqueTags: ', uniqueTags)
+
+---
+<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
+  <main class="container max-w-screen-sm">
+    <div class="my-5">
+      <h1 class="text-2xl">All tags:</h1>
+    </div>
+  </main>
+</Layout>

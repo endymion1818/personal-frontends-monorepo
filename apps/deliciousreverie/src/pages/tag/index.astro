@@ -1,4 +1,5 @@
 ---
+import { ArticleCard } from '../../../../../libs/article-card/src'
 import Layout from '../../components/Layout.astro'
 
 interface DataProps {
@@ -39,6 +40,12 @@ const response = await fetch(
               }
             }
           }
+          listTags {
+            data {
+              title
+              slug
+            }
+          }
         }
       `
     }),
@@ -46,34 +53,15 @@ const response = await fetch(
 );
 const { data } = await response.json();
 
-let accumulatedTags = []
-
-const formattedTags: DataProps = data.listPosts.data.reduce(
-  (previousValue, currentValue) => {
-    accumulatedTags.push(currentValue.tags)
-  },
-  []
-);
-
-const formattedTagsFlat = accumulatedTags.flat()
-
-console.log('formattedTagsFlat', formattedTagsFlat);
-
-const uniqueTags = formattedTagsFlat.filter((element, index, array) => {
-    if (element.tags.has(array.tags)) {
-        item.tags.delete(item);
-    } else {
-        return item;
-    }
-})
-
-console.log('uniqueTags: ', uniqueTags)
-
+const sortedPosts = data.listTags.data.reduce((acc, curr) => {
+  return curr
+}, [])
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
   <main class="container max-w-screen-sm">
     <div class="my-5">
       <h1 class="text-2xl">All tags:</h1>
+      {JSON.stringify(sortedPosts)}
     </div>
   </main>
 </Layout>

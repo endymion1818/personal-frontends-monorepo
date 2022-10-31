@@ -51,20 +51,19 @@ const response = await fetch(
     }),
   }
 );
-const { data } = await response.json();
+const { data } = await response.json()
 
-const getPostsForTag = (currentTagSlug => {
-  // TODO: still returns everything
-  return data.listPosts.data.filter(post => {
-    return post.tags.filter(tag => {
-      console.log(tag)
-      return tag.slug === currentTagSlug
-    })
+const getPostsForTag = (currentTag => {
+  return data.listPosts.data.map(post => {
+    if(!post.tags.some(tag => JSON.stringify(tag) === JSON.stringify(currentTag))) {
+      return null
+    }
+    return post
   })
 })
 
 const sortedPosts = data.listTags.data.reduce((acc, curr) => {
-  const posts = getPostsForTag(curr.slug)
+  const posts = getPostsForTag(curr)
   if(posts) {
     acc.push({
       title: curr.title,
@@ -75,7 +74,7 @@ const sortedPosts = data.listTags.data.reduce((acc, curr) => {
   return acc
  }, [])
 
-//  console.log('sortedPosts: ', sortedPosts)
+ console.log('sortedPosts: ', sortedPosts)
 
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">

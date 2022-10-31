@@ -53,15 +53,35 @@ const response = await fetch(
 );
 const { data } = await response.json();
 
+const getPostsForTag = (currentTagSlug => {
+  // TODO: still returns everything
+  return data.listPosts.data.filter(post => {
+    return post.tags.filter(tag => {
+      console.log(tag)
+      return tag.slug === currentTagSlug
+    })
+  })
+})
+
 const sortedPosts = data.listTags.data.reduce((acc, curr) => {
-  return curr
-}, [])
+  const posts = getPostsForTag(curr.slug)
+  if(posts) {
+    acc.push({
+      title: curr.title,
+      slug: curr.slug,
+      posts: posts
+    })
+  }
+  return acc
+ }, [])
+
+//  console.log('sortedPosts: ', sortedPosts)
+
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
   <main class="container max-w-screen-sm">
     <div class="my-5">
       <h1 class="text-2xl">All tags:</h1>
-      {JSON.stringify(sortedPosts)}
     </div>
   </main>
 </Layout>

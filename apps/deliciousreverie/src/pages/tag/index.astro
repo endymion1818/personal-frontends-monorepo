@@ -1,6 +1,7 @@
 ---
 import Layout from '../../components/Layout.astro'
 import getTagsArrayFromPostList from '../../components/getTagsArrayFromPostList'
+import postsQuery from '../../components/postsQuery'
 interface Props {
     listPosts: {
       data: Array<{
@@ -25,23 +26,7 @@ const response = await fetch(
       'Content-Type' : 'application/json'
     },
     body: JSON.stringify({
-      query: `
-        {
-          listPosts {
-            data {
-              id
-              title
-              slug
-              description
-              tags {
-                title
-                slug
-                description
-              }
-            }
-          }
-        }
-      `
+      query: postsQuery
     }),
   }
 );

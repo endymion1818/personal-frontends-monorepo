@@ -37,6 +37,11 @@ const { pageTitle, pageDescription, shareCard } = Astro.props
   <div class="w-screen">
     <Header title={title} menuItems={menuItems} subtitle={subtitle} logo={logo} />
     <slot />
+    <div class="prefooter bg-primary text-white py-11">
+      <div class="max-w-screen-sm mx-auto">
+        <blockquote><h2 class="text-4xl">“Wisest are they who know they do not know.”</h2><attr>— Jostein Gaarder</attr></blockquote>
+      </div>
+    </div>
     <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } logo={logo}/>
   </div>
 </body>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../components/Layout.astro'
 import getTagsArrayFromPostList from '../../components/getTagsArrayFromPostList'
+import postsQuery from '../../components/postsQuery';
 
 export async function getStaticPaths() {
   const { data } = await fetch(
@@ -12,23 +13,7 @@ export async function getStaticPaths() {
         'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-        query: `
-          {
-            listPosts {
-              data {
-                id
-                title
-                slug
-                description
-                tags {
-                  title
-                  slug
-                  description
-                }
-              }
-            }
-          }
-        `,
+        query: postsQuery,
       }),
     }
   ).then (

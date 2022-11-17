@@ -14,17 +14,17 @@ interface Props {
 
 const { post } = Astro.props
 ---
-<article class="card bg-secondary">
+<article class="bg-secondary">
   {post.shareCard && (
     <a href={`/post/${post.slug}`}><figure><img src={post.shareCard} alt="Shoes" /></figure></a>
   )}
-  <div class="card-body">
+  <div class="py-5">
     <h2 class="card-title text-inherit">
       <a href={`/post/${post.slug}`}>{post.title}</a>
     </h2>
     {post.description && <p class="text-inherit">{post.description}</p>}
     {post.tags.length ? (
-      <div class="card-actions justify-end items-center">
+      <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
         {post.tags.map(tag => (
           <a href={`/tag/${tag.slug}`} class="badge badge-outline">{tag.title}</a>

@@ -1,0 +1,43 @@
+---
+import Layout from '../../components/Layout.astro'
+import getTagsArrayFromPostList from '../../components/getTagsArrayFromPostList'
+import postsQuery from '../../components/postsQuery';
+
+export async function getStaticPaths() {
+  const { data } = await fetch(
+    process.env.WEBINY_READ_URL,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.WEBINY_ACCESS_TOKEN}`,
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+        query: postsQuery,
+      }),
+    }
+  ).then (
+    response => response.json()
+  )
+
+  const content = getTagsArrayFromPostList(data)
+
+  return content.map((tag) => {
+    return {
+      params: { slug: tag.slug },
+      props: { tag },
+    };
+  });
+}
+const { tag } = Astro.props;
+---
+<Layout pageTitle="home" pageDescription={tag.description}>
+  <main class="container max-w-screen-sm py-20">
+    <h1 class="text-2xl">Articles about {tag.title}:</h1>
+    <ul class="list-disc list-inside">
+      {tag.posts.map(post => (
+        <li><a class="hover-underline py-2 px-1 inline-block" href={`/post/${post.slug}`}>{post.title}</a></li>
+      ))}
+    </ul>
+  </main>
+</Layout>

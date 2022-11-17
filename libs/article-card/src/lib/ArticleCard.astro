@@ -1,11 +1,11 @@
 ---
 interface Props {
-  post: {
+  post?: {
     title: string
-    shareCard: string
+    shareCard?: string
     description: string
     slug: string
-    tags: Array<{
+    tags?: Array<{
       slug: string
       title: string
     }>
@@ -22,7 +22,7 @@ const { post } = Astro.props
     <h2 class="card-title text-inherit">
       <a href={`/post/${post.slug}`}>{post.title}</a>
     </h2>
-    <p class="text-inherit">{post.description}</p>
+    {post.description && <p class="text-inherit">{post.description}</p>}
     {post.tags.length ? (
       <div class="card-actions justify-end items-center">
         <span>This article is about:</span>

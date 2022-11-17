@@ -1,8 +1,16 @@
 ---
-import { ArticleCard } from '../../../../../libs/article-card/src'
 import Layout from '../../components/Layout.astro'
-
-interface DataProps {
+interface Tags {
+  title: string
+  slug: string
+  description: string
+  posts: Array<{
+    title: string
+    slug: string
+    description: string
+  }>
+}
+interface Props {
     listPosts: {
       data: Array<{
         id: string
@@ -46,9 +54,8 @@ const response = await fetch(
   }
 );
 const { data } = await response.json()
-// console.log(JSON.stringify(data.listPosts.data))
 
-const tagsArray = data.listPosts.data.reduce((prev, { tags, ...post }, i) => {
+const tagsArrayFromPostsList = data.listPosts.data.reduce((prev, { tags, ...post }) => {
   tags.forEach(tag => {
     prev.set(tag.slug, {
       title: tag.title,
@@ -59,22 +66,29 @@ const tagsArray = data.listPosts.data.reduce((prev, { tags, ...post }, i) => {
   return prev;
 }, new Map());
 
-const content = Array.from(tagsArray.values())
+const content:Tags[] = Array.from(tagsArrayFromPostsList.values())
 
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
   <main class="container max-w-screen-sm">
     <div class="my-5">
       <h1 class="text-2xl">All tags:</h1>
-      {content.map(tag => (
-        <div>
-          <h2 class="text-2xl">tag: {tag.title}</h2>
-          {tag.posts.map(post => (
-            <div>
-              <h3 class="text-l"><a href={`/post/${post.slug}`}>{post.title}</a></h3>
+      {content.map((tag) => (
+          <article class="card bg-secondary">
+            <div class="card-body">
+              <h2 class="card-title text-inherit">
+                <a href={`/post/${tag.slug}`}>{tag.title}</a>
+              </h2>
+              {tag.description && <p class="text-inherit">{tag.description}</p>}
+              {tag.posts.length ? (
+                <ul class="list-disc list-inside">
+                  {tag.posts.map(post => (
+                    <li><a class="hover:underline py-2 px-1 inline-block" href={`/post/${post.slug}`}>{post.title}</a></li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
-          ))}
-        </div>
+          </article>
       ))}
     </div>
   </main>

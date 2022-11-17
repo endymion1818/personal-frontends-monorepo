@@ -27,7 +27,7 @@ const { post } = Astro.props
       <div class="card-actions justify-end items-center">
         <span>This article is about:</span>
         {post.tags.map(tag => (
-          <a href={tag.slug} class="badge badge-outline">{tag.title}</a>
+          <a href={`/tag/${tag.slug}`} class="badge badge-outline">{tag.title}</a>
         ))}
       </div>
     ) : null}

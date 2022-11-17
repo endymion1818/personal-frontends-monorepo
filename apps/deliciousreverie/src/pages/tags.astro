@@ -1,6 +1,6 @@
 ---
-import { ArticleCard } from '../../../../../libs/article-card/src'
-import Layout from '../../components/Layout.astro'
+import { ArticleCard } from '../../../../libs/article-card/src'
+import Layout from '../components/Layout.astro'
 
 interface DataProps {
     listPosts: {
@@ -40,42 +40,34 @@ const response = await fetch(
               }
             }
           }
-          listTags {
-            data {
-              title
-              slug
-            }
-          }
         }
       `
     }),
   }
 );
 const { data } = await response.json()
+// console.log(JSON.stringify(data.listPosts.data))
 
-const getPostsForTag = (currentTag => {
-  return data.listPosts.data.map(post => {
-    if(!post.tags.some(tag => JSON.stringify(tag) === JSON.stringify(currentTag))) {
-      return null
-    }
-    return post
+const tagsArray = []
+
+const sortedItems = (items) => items.map(post => {
+  post.tags.map(tag => {
+    tagsArray.forEach((element, index) => {
+      if(element.slug === tag.slug) {
+        element.posts.push(post)
+      }
+    })
+    tagsArray.push({
+      tag: tag.title,
+      slug: tag.slug,
+      posts: [{...post}]
+    })
   })
 })
 
-const sortedPosts = data.listTags.data.reduce((acc, curr) => {
-  const posts = getPostsForTag(curr)
-  if(posts) {
-    acc.push({
-      title: curr.title,
-      slug: curr.slug,
-      posts: posts
-    })
-  }
-  return acc
- }, [])
+sortedItems(data.listPosts.data)
 
- console.log('sortedPosts: ', sortedPosts)
-
+console.log(JSON.stringify(tagsArray))
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
   <main class="container max-w-screen-sm">

@@ -1,6 +1,6 @@
 ---
-import { ArticleCard } from '../../../../libs/article-card/src'
-import Layout from '../components/Layout.astro'
+import { ArticleCard } from '../../../../../libs/article-card/src'
+import Layout from '../../components/Layout.astro'
 
 interface DataProps {
     listPosts: {
@@ -48,31 +48,34 @@ const response = await fetch(
 const { data } = await response.json()
 // console.log(JSON.stringify(data.listPosts.data))
 
-const tagsArray = []
-
-const sortedItems = (items) => items.map(post => {
-  post.tags.map(tag => {
-    tagsArray.forEach((element, index) => {
-      if(element.slug === tag.slug) {
-        element.posts.push(post)
-      }
-    })
-    tagsArray.push({
-      tag: tag.title,
+const tagsArray = data.listPosts.data.reduce((prev, { tags, ...post }, i) => {
+  tags.forEach(tag => {
+    prev.set(tag.slug, {
+      title: tag.title,
       slug: tag.slug,
-      posts: [{...post}]
+      posts: [...(prev.get(tag.slug)?.posts || []), post],
     })
-  })
-})
+  });
+  return prev;
+}, new Map());
 
-sortedItems(data.listPosts.data)
+const content = Array.from(tagsArray.values())
 
-console.log(JSON.stringify(tagsArray))
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
   <main class="container max-w-screen-sm">
     <div class="my-5">
       <h1 class="text-2xl">All tags:</h1>
+      {content.map(tag => (
+        <div>
+          <h2 class="text-2xl">tag: {tag.title}</h2>
+          {tag.posts.map(post => (
+            <div>
+              <h3 class="text-l"><a href={`/post/${post.slug}`}>{post.title}</a></h3>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   </main>
 </Layout>

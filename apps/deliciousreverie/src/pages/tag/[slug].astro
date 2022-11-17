@@ -1,16 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro'
-
-interface Tag {
-  title: string
-  slug: string
-  description: string
-  posts: Array<{
-    title: string
-    slug: string
-    description: string
-  }>
-}
+import getTagsArrayFromPostList from '../../components/getTagsArrayFromPostList'
 
 export async function getStaticPaths() {
   const { data } = await fetch(
@@ -33,6 +23,7 @@ export async function getStaticPaths() {
                 tags {
                   title
                   slug
+                  description
                 }
               }
             }
@@ -44,18 +35,7 @@ export async function getStaticPaths() {
     response => response.json()
   )
 
-  const tagsArrayFromPostsList = data.listPosts.data.reduce((prev, { tags, ...post }) => {
-    tags.forEach(tag => {
-      prev.set(tag.slug, {
-        title: tag.title,
-        slug: tag.slug,
-        posts: [...(prev.get(tag.slug)?.posts || []), post],
-      })
-    });
-    return prev;
-  }, new Map());
-
-const content:Tag[] = Array.from(tagsArrayFromPostsList.values())
+  const content = getTagsArrayFromPostList(data)
 
   return content.map((tag) => {
     return {

@@ -35,12 +35,11 @@ h5,
 h6 {
   font-family: 'Lovechild';
 }
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  display: grid;
-  justify-content: center;
-  background: #f9fafb;
-  color: #111827;
+.max-w-contain {
+  max-width: 30em;
+}
+@media (max-width: 640px) {
+  .max-w-contain {
+    padding: 0 1rem;
+  }
 }

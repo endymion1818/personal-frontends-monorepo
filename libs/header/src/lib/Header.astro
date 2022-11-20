@@ -8,24 +8,30 @@ interface Props {
   logo?: string;
   title: string;
   subtitle: string;
+  url: string;
 }
 
-const {menuItems, logo, title, subtitle } = Astro.props;
+const {menuItems, logo, title, subtitle, url } = Astro.props;
 ---
 <header class="bg-accent">
-  <div class=" max-w-screen-sm mx-auto">
+  <div class="mx-auto">
+    <div class="bg-slate p-2">
+      <a href="#main" class="block skip-links btn btn-ghost w-40 border-secondary text-secondary p-4">Skip links</a>
+    </div>
+  </div>
+  <div class=" max-w-contain mx-auto">
     <div class="header--top py-11 text-white">
-      <a class="header--logo normal-case text-xl hover:text-underline">
+      <a class="header--logo normal-case text-xl hover:text-underline" href={url}>
       {logo ? (
         <img class="w-4/5" src={logo}>
         ) : (
-          <span class="font-display">{title || null}</span>
+          <span class="font-display text-5xl">{title || null}</span>
       )}
       </a>
-      {subtitle && <p class="font-display text-2xl">{subtitle}</p>}
+      {subtitle && <p class="font-display text-3xl mt-4">{subtitle}</p>}
     </div>
   </div>
-  <div class="navbar max-w-screen-sm mx-auto flex-1 justify-start">
+  <div class="navbar max-w-contain mx-auto flex-1 justify-start">
     {menuItems?.length ? (
       <ul class="header--navigation">
         {menuItems.map(item => (

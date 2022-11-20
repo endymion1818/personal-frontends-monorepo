@@ -9,42 +9,45 @@ const { data } = Astro.props
   {data.map(field => (
     <>
       {field.type === 'paragraph' && (
-        <p id={field.id} class="mb-2 text-prose" set:html={field.data.text} />)}
+        <p id={field.id} class="my-2 text-prose" set:html={field.data.text} />)}
+        {field.type === 'image' && (
+        <img id={field.id} class="my-2" src={field.data.file} alt={field.data.caption} />)
+      }
       {field.type === 'header' && (
         <>
           {field.data.level === 1 && (
-            <h1 id={field.id} class="text-4xl mb-2" set:html={field.data.text}/>
+            <h1 id={field.id} class="text-4xl my-6" set:html={field.data.text}/>
           )}
           {field.data.level === 2 && (
-            <h2 id={field.id} class="text-3xl mb-2" set:html={field.data.text}/>
+            <h2 id={field.id} class="text-3xl my-5" set:html={field.data.text}/>
           )}
           {field.data.level === 3 && (
-            <h3 id={field.id} class="text-2xl mb-2" set:html={field.data.text}/>
+            <h3 id={field.id} class="text-2xl my-4" set:html={field.data.text}/>
           )}
           {field.data.level === 4 && (
-            <h4 id={field.id} class="text-l mb-2" set:html={field.data.text}/>
+            <h4 id={field.id} class="text-l my-3" set:html={field.data.text}/>
           )}
           {field.data.level === 5 && (
-            <h5 id={field.id} class="mb-2" set:html={field.data.text}/>
+            <h5 id={field.id} class="my-2" set:html={field.data.text}/>
           )}
           {field.data.level === 6 && (
-            <h6 id={field.id} class="mb-2" set:html={field.data.text}/>
+            <h6 id={field.id} class="my-2" set:html={field.data.text}/>
           )}
         </>
       )}
       {field.type === 'list' && (
         <>
           {field.data.style === 'unordered' && (
-            <ul id={field.id} class="list-inside list-disc mb-2">
+            <ul id={field.id} class="list-inside list-disc my-2">
               {field.data.items.map(item => (
                 <li set:html={item} />
               ))}
             </ul>
           )}
           {field.data.style === 'ordered' && (
-            <ol id={field.id} class="list-inside list-decimal mb-2">
+            <ol id={field.id} class="list-inside list-decimal my-2">
               {field.data.items.map(item => (
-                <li class="mb-1">{item}</li>
+                <li class="my-1">{item}</li>
               ))}
             </ol>
           )}

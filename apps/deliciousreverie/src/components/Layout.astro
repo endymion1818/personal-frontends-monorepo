@@ -3,7 +3,10 @@ interface Props {
   pageTitle: string
   pageDescription?: string
   shareCard?: string
+  canonical?: string
 }
+
+const { URL } = process.env
 
 import { SEO } from 'astro-seo'
 import { Header } from '@frontends/header'
@@ -19,7 +22,7 @@ import {
   acknowledgementText,
   socialLinks } from '../../sitedata';
 
-const { pageTitle, pageDescription, shareCard } = Astro.props
+const { pageTitle, pageDescription, shareCard, canonical } = Astro.props
 ---
 <html lang="en" data-theme="mytheme">
 <head>
@@ -32,6 +35,7 @@ const { pageTitle, pageDescription, shareCard } = Astro.props
   <SEO
     title={`${pageTitle} - ${title}`}
     description={`${pageDescription || subtitle}`}
+    canonical={canonical ? `${URL}/${canonical}` : URL}
    />
 </head>
 <body class="bg-secondary text-primary">

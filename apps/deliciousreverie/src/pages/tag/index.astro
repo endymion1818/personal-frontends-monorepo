@@ -35,7 +35,7 @@ const { data } = await response.json()
 const content = getTagsArrayFromPostList(data)
 
 ---
-<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
+<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" canonical="tag">
     <div class="my-5">
       <h1 class="text-4xl">All tags:</h1>
       {content.map((tag) => (

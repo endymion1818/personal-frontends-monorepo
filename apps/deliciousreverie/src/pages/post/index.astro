@@ -39,7 +39,7 @@ const response = await fetch(
 );
 const { data } = await response.json();
 ---
-<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog">
+<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" canonical="post">
     <h1 class="text-4xl">Archive</h1>
     {data?.listPosts?.data.length ? (
         <div class="grid grid-cols-1 gap-4 py-4">

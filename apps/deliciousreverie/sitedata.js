@@ -2,7 +2,6 @@ import Logo from "./src/components/logo.svg"
 
 export let title = 'Delicious Reverie';
 export let subtitle = "blog of developer & bookworm benjamin read"
-export let url = 'https://deliciousreverie.co.uk'
 
 export let menuItems = [{
   title: 'Home',

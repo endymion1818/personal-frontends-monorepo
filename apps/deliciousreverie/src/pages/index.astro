@@ -13,7 +13,7 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listPosts(limit: 5) {
+          listPosts(limit: 5, sort: publishDate_DESC) {
             data {
               id
               title

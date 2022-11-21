@@ -1,5 +1,5 @@
 export default `{
-  listPosts {
+  listPosts(sort: publishDate_DESC) {
     data {
       id
       title

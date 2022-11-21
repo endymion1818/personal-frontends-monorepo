@@ -1,9 +1,18 @@
 ---
+import shiki from 'shiki'
 interface Props {
   data: any
 }
 
 const { data } = Astro.props
+
+async function formatCode(code) {
+  return shiki.getHighlighter({
+    theme: 'nord',
+  }).then(highlighter => {
+    return highlighter.codeToHtml(code, { lang: 'html' })
+  })
+}
 ---
 <>
   {data.map(field => (
@@ -54,11 +63,7 @@ const { data } = Astro.props
         </>
       )}
       {field.type === 'code' && (
-        <pre>
-          <code>
-            {field.data.code}
-          </code>
-        </pre>
+        <div set:html={formatCode(field.data.code)} />
       )}
     </>
   ))}

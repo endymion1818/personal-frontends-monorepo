@@ -34,10 +34,7 @@ export let footerMenuItems = [{
   }]
 }, {
   title: 'Menu',
-  items: [{
-    title: 'About',
-    link: '/about'
-  }]
+  items: menuItems
 }]
 
 export let acknowledgementText = "Delicious Reverie is the blog of Benjamin Read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind, DaisyUI and Svelte. © Some rights are reserved. This site doesn't use any cookies or session storage and has no tracking scripts, except when there are YouTube embeds."

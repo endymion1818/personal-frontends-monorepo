@@ -25,21 +25,24 @@ const { footerMenuItems, logo, title, acknowledgementText, socialLinks, url } = 
   <div class="py-10 max-w-contain mx-auto">
     <div class="footer gap-x-16 my-10">
       <div>
+        <a class="items-center grid-flow-col" href={url}>
+          {logo ? <img class="max-w-xs" src={logo}> : <span>{title}</span>}
+        </a>
         {acknowledgementText}
       </div>
       {footerMenuItems?.map(itemGroup => (
           <div>
             <span class="footer-title">{itemGroup.title}</span>
+            <ul class="list-inside">
             {itemGroup.items.map(item => (
-              <a href={item.link} class="link link-hover">{item.title}</a>
+              <li><a href={item.link} class="link link-hover sm:p-2 sm:inline-block">{item.title}</a></li>
             ))}
+            </ul>
           </div>
       ))}
     </div>
     <div class="footer items-center bg-grey-900 text-neutral-content">
-      <a class="items-center grid-flow-col" href={url}>
-        {logo ? <img class="max-w-xs" src={logo}> : <span>{title}</span>}
-      </a>
+      <h3 class="text-xl">Where you can find me:</h3>
       {socialLinks ? (
         <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           {socialLinks.linkedin && (

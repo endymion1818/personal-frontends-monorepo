@@ -9,10 +9,9 @@
     "postinstall": "node ./tools/scripts/patch-nx-cli.js"
   },
   "private": true,
-  "dependencies": {
-    "@astrojs/sitemap": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^2.1.1",
     "@nrwl/cli": "14.7.5",

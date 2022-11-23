@@ -42,13 +42,13 @@ const content = getTagsArrayFromPostList(data)
           <article class="card bg-secondary">
             <div class="card-body">
               <h2 class="card-title text-inherit">
-                <a href={`/post/${tag.slug}`}>{tag.title}</a>
+                <a href={`/posts/${tag.slug}`}>{tag.title}</a>
               </h2>
               {tag.description && <p class="text-inherit">{tag.description}</p>}
               {tag.posts.length ? (
                 <ul class="list-disc list-inside">
                   {tag.posts.map(post => (
-                    <li><a class="hover:underline py-2 px-1 inline-block" href={`/post/${post.slug}`}>{post.title}</a></li>
+                    <li><a class="hover:underline py-2 px-1 inline-block" href={`/posts/${post.slug}`}>{post.title}</a></li>
                   ))}
                 </ul>
               ) : null}

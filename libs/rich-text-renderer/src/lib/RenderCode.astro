@@ -1,0 +1,14 @@
+---
+import shiki from 'shiki'
+
+const { code } = Astro.props
+
+let codeOutput
+
+await shiki.getHighlighter({
+  theme: 'nord',
+}).then(highlighter => {
+  codeOutput = highlighter.codeToHtml(code, { lang: 'html' })
+})
+---
+<div set:html={codeOutput} />

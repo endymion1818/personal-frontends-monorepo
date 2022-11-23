@@ -20,14 +20,14 @@ const { post } = Astro.props
   )}
   <div class="py-5">
     <h2 class="card-title text-inherit">
-      <a href={`/post/${post.slug}`}>{post.title}</a>
+      <a class="hover:underline" href={`/post/${post.slug}`}>{post.title}</a>
     </h2>
     {post.description && <p class="text-inherit">{post.description}</p>}
     {post.tags.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
         {post.tags.map(tag => (
-          <a href={`/tag/${tag.slug}`} class="badge badge-outline">{tag.title}</a>
+          <a href={`/tag/${tag.slug}`} class="badge badge-outline hover:badge-primary hover:text-white">{tag.title}</a>
         ))}
       </div>
     ) : null}

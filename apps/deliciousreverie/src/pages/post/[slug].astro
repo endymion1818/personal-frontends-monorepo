@@ -14,7 +14,7 @@ export async function getStaticPaths() {
       body: JSON.stringify({
         query: `
           {
-            listPosts {
+            listPosts(limit: 200) {
               data {
                 id
                 title

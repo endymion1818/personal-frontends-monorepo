@@ -35,7 +35,7 @@ const { tag } = Astro.props;
     <h1 class="text-4xl">Articles about {tag.title}:</h1>
     <ul class="list-disc list-inside">
       {tag.posts.map(post => (
-        <li><a class="hover-underline py-2 px-1 inline-block" href={`/post/${post.slug}`}>{post.title}</a></li>
+        <li><a class="hover:underline py-2 px-1 inline-block" href={`/post/${post.slug}`}>{post.title}</a></li>
       ))}
     </ul>
 </Layout>

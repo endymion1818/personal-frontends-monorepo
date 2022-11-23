@@ -1,4 +1,5 @@
 ---
+import RenderCode from "./RenderCode.astro"
 interface Props {
   data: any
 }
@@ -54,11 +55,7 @@ const { data } = Astro.props
         </>
       )}
       {field.type === 'code' && (
-        <pre>
-          <code>
-            {field.data.code}
-          </code>
-        </pre>
+        <RenderCode code={field.data.code} />
       )}
     </>
   ))}

@@ -39,14 +39,14 @@ const { data } = Astro.props
       {field.type === 'list' && (
         <>
           {field.data.style === 'unordered' && (
-            <ul id={field.id} class="list-inside list-disc my-2">
+            <ul id={field.id} class="list-disc ml-4">
               {field.data.items.map(item => (
                 <li set:html={item} />
               ))}
             </ul>
           )}
           {field.data.style === 'ordered' && (
-            <ol id={field.id} class="list-inside list-decimal my-2">
+            <ol id={field.id} class="list-decimal ml-4">
               {field.data.items.map(item => (
                 <li class="my-1">{item}</li>
               ))}

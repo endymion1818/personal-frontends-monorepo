@@ -39,10 +39,10 @@ const response = await fetch(
 const { data } = await response.json();
 ---
 <Layout pageTitle="home">
-      <h2 class="text-4xl">Thanks for popping round!</h2>
-      <p class="mb-2">Delicious Reverie is a blog mostly about web development and JavaScript engineering. But it's my personal playground and learning journal too. I hope you find something that inspires or helps you.</p>
-      <p class="mb-4"><a href="/contact">Drop me a message</a> if you'd like to say hi, if you're looking for some help, or if I got something wrong.</p>
-      <h2 class="text-2xl mt-5">Latest 5 Posts:</h2>
+      <p class="mb-2">Delicious Reverie is the personal home of <a class="underline" href="/about-benjamin-read">Benjamin Read</a> on the web.</p>
+      <p class="mb-4">I'm an experienced <strong>Developer Relations</strong> product evangelist and community builder, a Senior <strong>JavaScript Software Engineer</strong> with experience of FinTech and PropTech, and a literature buff.</p>
+      <a class="btn btn-primary normal-case mb-6" href="/about-benjamin-read">Find out more about me</a>
+      <h2 class="text-2xl">Latest 5 Posts:</h2>
     {data?.listPosts?.data.length ? (
         <div class="grid grid-cols-1 gap-4">
           {data?.listPosts?.data.map(post => (

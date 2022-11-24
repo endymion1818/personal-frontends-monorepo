@@ -14,7 +14,7 @@ export let menuItems = [{
   link: '/links',
 }, {
   title: 'Archive',
-  link: '/post',
+  link: '/posts',
 }, {
   title: 'Contact',
   link: '/contact',

@@ -57,5 +57,9 @@ export let socialLinks = {
   youtube: {
     title: "youtube",
     link: "https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ"
+  },
+  github: {
+    title: "github",
+    link: "https://github.com/endymion1818"
   }
 }

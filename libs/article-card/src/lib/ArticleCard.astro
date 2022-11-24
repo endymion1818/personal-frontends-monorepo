@@ -23,7 +23,7 @@ const { post } = Astro.props
       <a class="hover:underline" href={`/posts/${post.slug}`}>{post.title}</a>
     </h2>
     {post.description && <p class="text-inherit">{post.description}</p>}
-    {post.tags.length ? (
+    {post?.tags?.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
         {post.tags.map(tag => (

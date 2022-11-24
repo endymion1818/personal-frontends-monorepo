@@ -2,7 +2,8 @@
 import { ArticleCard } from '@frontends/article-card'
 import Layout from '../components/Layout.astro'
 
-const response = await fetch(
+const getter = async (entryId) => {
+  const response = await fetch(
     process.env.WEBINY_READ_URL,
   {
     method: 'POST',
@@ -12,42 +13,67 @@ const response = await fetch(
     },
     body: JSON.stringify({
       query: `
-        {
-          listPosts(limit: 5, sort: publishDate_DESC) {
+        query myQuery($PostsListWhereInput: PostsListWhereInput) {
+          listPosts(limit: 2, where: $PostsListWhereInput) {
             data {
               id
               title
               slug
               description
-              body
               publishDate
               shareCard
-              tags {
-                title
-                slug
-              }
             }
             error {
               message
             }
           }
         }
-      `
+      `,
+        variables: {
+          PostsListWhereInput: {
+            tags: {
+              entryId: entryId
+            }
+          }
+        }
     }),
   }
 );
-const { data } = await response.json();
+  return await response.json();
+}
+
+const res = await Promise.all([
+  getter('63278ac9dbaa390009981432'),
+  getter('63278b34dbaa39000998143a'),
+  getter('637b8aa4d9d6200008ab30e3')
+])
 ---
 <Layout pageTitle="home">
       <p class="mb-2">Delicious Reverie is the personal home of <a class="underline" href="/about-benjamin-read">Benjamin Read</a> on the web.</p>
       <p class="mb-4">I'm an experienced <strong>Developer Relations</strong> product evangelist and community builder, a Senior <strong>JavaScript Software Engineer</strong> with experience of FinTech and PropTech, and a literature buff.</p>
       <a class="btn btn-primary normal-case mb-6" href="/about-benjamin-read">Find out more about me</a>
-      <h2 class="text-2xl">Latest 5 Posts:</h2>
-    {data?.listPosts?.data.length ? (
-        <div class="grid grid-cols-1 gap-4">
-          {data?.listPosts?.data.map(post => (
-            <ArticleCard post={post}/>
-          ))}
-        </div>
-      ) : null}
+      <h2 class="text-2xl">🎙 Recent Talks & Podcasts:</h2>
+      {res[0].data?.listPosts?.data.length ? (
+          <div class="grid grid-cols-1 gap-4">
+            {res[0].data?.listPosts?.data.map(post => (
+              <ArticleCard post={post}/>
+            ))}
+          </div>
+        ) : null}
+      <h2 class="text-2xl mt-8">✍️ Recently Published Articles:</h2>
+      {res[1].data?.listPosts?.data.length ? (
+          <div class="grid grid-cols-1 gap-4">
+            {res[1].data?.listPosts?.data.map(post => (
+              <ArticleCard post={post}/>
+            ))}
+          </div>
+        ) : null}
+      <h2 class="text-2xl mt-8">📝 Recent Technical Documentation:</h2>
+      {res[2].data?.listPosts?.data.length ? (
+          <div class="grid grid-cols-1 gap-4">
+            {res[2].data?.listPosts?.data.map(post => (
+              <ArticleCard post={post}/>
+            ))}
+          </div>
+        ) : null}
 </Layout>

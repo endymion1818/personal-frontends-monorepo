@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   outDir: '../../dist/apps/deliciousreverie',
-  site: process.env.URL || 'http://localhost:3000',
+  site: 'https://deliciousreverie.co.uk',
   integrations: [
     svelte(),
     tailwind(),

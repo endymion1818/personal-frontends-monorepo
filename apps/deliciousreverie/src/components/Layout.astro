@@ -34,7 +34,7 @@ const { pageTitle, pageDescription, shareCard, canonical } = Astro.props
   <SEO
     title={`${pageTitle} - ${title}`}
     description={`${pageDescription || subtitle}`}
-    canonical={canonical ? `${URL}/${canonical}` : URL}
+    canonical={canonical ? canonical : `${URL}/${canonical}`}
    />
 </head>
 <body class="bg-secondary text-primary">

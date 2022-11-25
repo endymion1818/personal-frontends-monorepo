@@ -23,6 +23,7 @@ export async function getStaticPaths() {
                 body
                 publishDate
                 shareCard
+                canonicalLink
                 embed {
                   link
                   type
@@ -54,7 +55,7 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 ---
-<Layout pageTitle="home" pageDescription={post.description} canonical={post.slug}>
+<Layout pageTitle="home" pageDescription={post.description} canonical={post.canonicalLink}>
     <h1 class="text-4xl">{post.title}</h1>
     {post.embed?.link && (
       <div>

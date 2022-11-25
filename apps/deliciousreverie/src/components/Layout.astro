@@ -38,7 +38,7 @@ const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
     canonical={canonical ? canonical : slug ? `${URL}/${slug}` : ''}
    />
 </head>
-<body class="bg-secondary text-primary">
+<body class="bg-secondary text-black leading-relaxed">
     <Header title={title} menuItems={menuItems} subtitle={subtitle} logo={logo} url={URL} />
     <main class="max-w-contain mx-auto py-10" id="main">
       <slot />

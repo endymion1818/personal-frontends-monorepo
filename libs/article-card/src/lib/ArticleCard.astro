@@ -7,6 +7,7 @@ interface Props {
     shareCard?: string
     description: string
     slug: string
+    publishDate: string
     embed?: {
       link: string
       type: 'spotify' | 'youtube'
@@ -19,16 +20,17 @@ interface Props {
 }
 
 const { post } = Astro.props
+
 ---
 <article class="bg-secondary">
   {post.shareCard && (
     <a href={`/posts/${post.slug}`}><img src={post.shareCard} /></a>
   )}
   <div class="py-5">
-    <h2 class="card-title text-inherit">
+    <h2 class="card-title text-2xl text-inherit mb-2 tracking-wide">
       <a class="hover:underline" href={`/posts/${post.slug}`}>{post.title}</a>
     </h2>
-    {(!post.embed && post.description) && <p class="text-inherit">{post.description}</p>}
+    {(!post.embed && post.description) && <p class="text-inherit text-lg">{post.description}</p>}
     {post.embed?.link && (
       <Embeds embed={post.embed}/>
     )}

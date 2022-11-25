@@ -1,5 +1,6 @@
 ---
 import { RichTextRenderer } from "@frontends/rich-text-renderer"
+import { Embeds } from "@frontends/embeds"
 import Layout from '../../components/Layout.astro'
 
 export async function getStaticPaths() {
@@ -58,14 +59,7 @@ const { post } = Astro.props;
 <Layout pageTitle="home" pageDescription={post.description} canonical={post.canonicalLink} slug={post.slug}>
     <h1 class="text-4xl">{post.title}</h1>
     {post.embed?.link && (
-      <div>
-        {post.embed.type === 'youtube' && (
-          <iframe width="560" height="315" src={post.embed.link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        )}
-        {post.embed?.link && post.embed.type === 'spotify' && (
-          <iframe style="border-radius:12px" src={post.embed.link} width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      )}
-      </div>
+      <Embeds embed={post.embed} />
   )}
     <RichTextRenderer data={post.body} />
 </Layout>

@@ -32,7 +32,7 @@ const {menuItems, logo, title, subtitle, url } = Astro.props;
   </div>
   <div class="navbar max-w-contain mx-auto flex-1 justify-start">
     {menuItems?.length ? (
-      <ul class="header--navigation">
+      <ul class="header--navigation overflow-y-scroll">
         {menuItems.map(item => (
           <li class="text-white">
             <a class="btn btn-ghost normal-case" href={item.link}>{item.title}</a>

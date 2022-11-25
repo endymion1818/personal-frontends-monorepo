@@ -16,7 +16,6 @@ import { Footer } from '@frontends/footer'
 import {
   title,
   subtitle,
-  logo,
   menuItems,
   footerMenuItems,
   acknowledgementText,
@@ -39,7 +38,7 @@ const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
    />
 </head>
 <body class="bg-secondary text-black leading-relaxed">
-    <Header title={title} menuItems={menuItems} subtitle={subtitle} logo={logo} url={URL} />
+    <Header title={title} menuItems={menuItems} subtitle={subtitle} url={URL} />
     <main class="max-w-contain mx-auto py-10" id="main">
       <slot />
     </main>
@@ -48,6 +47,6 @@ const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
         <blockquote><h2 class="text-4xl">“Wisest are they who know they do not know.”</h2><attr>— Jostein Gaarder</attr></blockquote>
       </div>
     </div>
-    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } logo={logo} url={URL}/>
+    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={URL}/>
 </body>
 </html>

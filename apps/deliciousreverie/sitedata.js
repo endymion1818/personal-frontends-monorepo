@@ -1,5 +1,3 @@
-import Logo from "./src/components/logo.svg"
-
 export let title = 'Delicious Reverie';
 export let subtitle = "Benjamin Read's code garden."
 
@@ -26,20 +24,18 @@ export let footerMenuItems = [{
     title: 'Talks',
     link: '/tags/talks'
   }, {
-    title: 'Videos',
-    link: '/tags/videos'
+    title: 'Published Content',
+    link: '/tags/published-content'
   },{
-    title: 'Articles',
-    link: '/tags/articles'
+    title: 'Documentation',
+    link: '/tags/documentation'
   }]
 }, {
   title: 'Menu',
   items: menuItems
 }]
 
-export let acknowledgementText = "Delicious Reverie is the blog of Benjamin Read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind, DaisyUI and Svelte. © Some rights are reserved. This site doesn't use any cookies or session storage and has no tracking scripts, except when there are YouTube embeds."
-
-export let logo = Logo
+export let acknowledgementText = "Delicious Reverie is the blog of Benjamin Read. Set in Lovechild and your system font. Built with Nx, Astro, Tailwind, DaisyUI and Svelte. Content is stored in a Webiny CMS instance hosted on AWS. © Some rights are reserved. This site doesn't use any cookies or session storage and has no tracking scripts, except when there are embeds."
 
 export let socialLinks = {
   linkedin: {

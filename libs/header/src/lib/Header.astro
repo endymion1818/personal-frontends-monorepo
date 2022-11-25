@@ -1,5 +1,4 @@
 ---
-
 interface Props {
   menuItems: Array<{
     title: string,
@@ -25,10 +24,10 @@ const {menuItems, logo, title, subtitle, url } = Astro.props;
       {logo ? (
         <img class="w-6/8" src={logo}>
         ) : (
-          <span class="font-display text-5xl">{title || null}</span>
+          <span class="font-display text-secondary text-5xl">{title || null}</span>
       )}
       </a>
-      {subtitle && <p class="font-display text-3xl mt-4">{subtitle}</p>}
+      {subtitle && <p class="font-display text-3xl mt-2">{subtitle}</p>}
     </div>
   </div>
   <div class="navbar max-w-contain mx-auto flex-1 justify-start">

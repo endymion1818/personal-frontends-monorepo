@@ -64,6 +64,7 @@ const res = await Promise.all([
             ))}
           </div>
         ) : null}
+      <a class="btn btn-primary" href="/tags/talks">&rarr; See all talks and podcasts</a>
       <h2 class="text-2xl mt-8">✍️ Recently Published Articles:</h2>
       {res[1].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">
@@ -72,6 +73,7 @@ const res = await Promise.all([
             ))}
           </div>
         ) : null}
+      <a class="btn btn-primary" href="/tags/published-content">&rarr; See all published articles</a>
       <h2 class="text-2xl mt-8">📝 Recent Technical Documentation:</h2>
       {res[2].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">
@@ -80,4 +82,5 @@ const res = await Promise.all([
             ))}
           </div>
         ) : null}
+      <a class="btn btn-primary" href="/tags/documentation">&rarr; See all tech docs</a>
 </Layout>

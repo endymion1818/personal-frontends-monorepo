@@ -24,10 +24,10 @@ export let footerMenuItems = [{
   title: 'Links',
   items: [{
     title: 'Talks',
-    link: '/tag/talks'
+    link: '/tags/talks'
   }, {
     title: 'Videos',
-    link: '/tag/videos'
+    link: '/tags/videos'
   },{
     title: 'Articles',
     link: '/tags/articles'

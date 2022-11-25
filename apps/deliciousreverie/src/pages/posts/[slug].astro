@@ -23,6 +23,10 @@ export async function getStaticPaths() {
                 body
                 publishDate
                 shareCard
+                embed {
+                  link
+                  type
+                }
                 tags {
                   title
                   slug
@@ -52,5 +56,15 @@ const { post } = Astro.props;
 ---
 <Layout pageTitle="home" pageDescription={post.description} canonical={post.slug}>
     <h1 class="text-4xl">{post.title}</h1>
+    {post.embed?.link && (
+      <div>
+        {post.embed.type === 'youtube' && (
+          <iframe width="560" height="315" src={post.embed.link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        )}
+        {post.embed?.link && post.embed.type === 'spotify' && (
+          <iframe style="border-radius:12px" src={post.embed.link} width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      )}
+      </div>
+  )}
     <RichTextRenderer data={post.body} />
 </Layout>

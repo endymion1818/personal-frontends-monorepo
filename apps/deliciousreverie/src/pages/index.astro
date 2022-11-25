@@ -14,7 +14,7 @@ const getter = async (entryId) => {
     body: JSON.stringify({
       query: `
         query myQuery($PostsListWhereInput: PostsListWhereInput) {
-          listPosts(limit: 2, where: $PostsListWhereInput) {
+          listPosts(limit: 2, sort: publishDate_DESC, where: $PostsListWhereInput) {
             data {
               id
               title
@@ -22,6 +22,10 @@ const getter = async (entryId) => {
               description
               publishDate
               shareCard
+              embed {
+                link
+                type
+              }
             }
             error {
               message
@@ -51,7 +55,7 @@ const res = await Promise.all([
 <Layout pageTitle="home">
       <p class="mb-2">Delicious Reverie is the personal home of <a class="underline" href="/about-benjamin-read">Benjamin Read</a> on the web.</p>
       <p class="mb-4">I'm an experienced <strong>Developer Relations</strong> product evangelist and community builder, a Senior <strong>JavaScript Software Engineer</strong> with experience of FinTech and PropTech, and a literature buff.</p>
-      <a class="btn btn-primary normal-case mb-6" href="/about-benjamin-read">Find out more about me</a>
+      <a class="btn btn-primary normal-case mb-6" href="/about-benjamin-read">More about me</a>
       <h2 class="text-2xl">🎙 Recent Talks & Podcasts:</h2>
       {res[0].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">

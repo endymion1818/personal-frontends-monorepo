@@ -45,7 +45,7 @@ export async function getStaticPaths() {
 }
 const { page } = Astro.props;
 ---
-<Layout pageTitle="home" pageDescription={page.description} canonical={page.slug}>
+<Layout pageTitle="home" pageDescription={page.description} slug={page.slug}>
     <h1 class="text-4xl">{page.title}</h1>
     <RichTextRenderer data={page.body} />
 </Layout>

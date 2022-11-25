@@ -44,7 +44,7 @@ if(data.listPosts.data.length >= 200) {
   return false
 }
 ---
-<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" canonical="post">
+<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" slug="posts">
     <h1 class="text-4xl">Archive</h1>
     {data?.listPosts?.data.length ? (
         <div class="grid grid-cols-1 gap-4 py-4">

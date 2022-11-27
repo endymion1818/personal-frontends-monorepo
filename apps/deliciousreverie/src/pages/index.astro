@@ -76,7 +76,7 @@ const res = await Promise.all([
             ))}
           </div>
         ) : null}
-      <a class="btn btn-primary normal-case" href="/tags/published-content">&rarr; See all {res[1].data?.listPosts?.meta.totalCount} published articles</a>
+      <a class="btn btn-primary normal-case" href="/tags/published-content/">&rarr; See all {res[1].data?.listPosts?.meta.totalCount} published articles</a>
       <h2 class="text-3xl mt-8 tracking-wide">📝 Recent Technical Documentation:</h2>
       {res[2].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">
@@ -85,5 +85,5 @@ const res = await Promise.all([
             ))}
           </div>
         ) : null}
-      <a class="btn btn-primary normal-case" href="/tags/documentation">&rarr; See all {res[2].data?.listPosts?.meta.totalCount} tech docs</a>
+      <a class="btn btn-primary normal-case" href="/tags/documentation/">&rarr; See all {res[2].data?.listPosts?.meta.totalCount} tech docs</a>
 </Layout>

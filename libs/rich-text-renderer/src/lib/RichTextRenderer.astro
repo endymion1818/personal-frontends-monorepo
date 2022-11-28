@@ -48,7 +48,7 @@ const { data } = Astro.props
           {field.data.style === 'ordered' && (
             <ol id={field.id} class="list-decimal ml-4 text-large">
               {field.data.items.map(item => (
-                <li class="my-1">{item}</li>
+                <li class="my-1" set:html={item} />
               ))}
             </ol>
           )}

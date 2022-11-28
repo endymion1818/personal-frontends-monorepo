@@ -2,6 +2,7 @@
 import { ArticleCard } from '@frontends/article-card'
 import { Embeds } from '@frontends/embeds';
 import Layout from '../components/Layout.astro'
+import prettyNumber from '../components/prettyNumber';
 
 const getter = async (entryId) => {
   const response = await fetch(
@@ -104,12 +105,12 @@ const videos = await getLatestYoutubeVideo()
         ) : null}
       <a class="btn btn-primary normal-case" href="/tags/documentation/">&rarr; See all {res[2].data?.listPosts?.meta.totalCount} tech docs</a>
       <hr/>
-      <h2 class="text-3xl mt-8 tracking-wide">📼 YouTube Channel</h2>
+      <h2 class="text-3xl mt-8 pb-4 tracking-wide">📼 YouTube Channel</h2>
       <p class="text-inherit text-lg mb-2">I also run a YouTube channel called "The Coding Cocoon" where I teach young adults how to code and design.</p>
-      <p class="text-inherit text-lg">The channel currently has {stats.items[0].statistics.subscriberCount} subscribers and {stats.items[0].statistics.viewCount} views.</p>
+      <p class="text-inherit text-lg">The channel currently has {stats.items[0].statistics.subscriberCount.toLocaleString('en-GB')} subscribers and {prettyNumber(stats.items[0].statistics.viewCount)} views.</p>
       <h3 class="text-2xl mt-8 mb-2 tracking-wide">Latest video:</h3>
       <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${videos.items[0].id.videoId}` }} />
       <h4 class="text-xl mt-8 tracking-wide">{videos.items[0].snippet.title}</h4>
-      <p class="text-inherit text-md">{videos.items[0].snippet.description}</p>
-      <a href="">Visit </a>
+      <p class="text-inherit text-md mb-4">{videos.items[0].snippet.description}</p>
+      <a class="btn btn-primary normal-case" href="https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ">See all videos</a>
 </Layout>

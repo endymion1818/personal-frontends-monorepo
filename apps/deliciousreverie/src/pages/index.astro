@@ -63,7 +63,14 @@ const getLatestYoutubeVideo = async () => {
   return await response.json();
 }
 
-const { items } = await getLatestYoutubeVideo()
+const getYouTubeStatistics = async () => {
+  const response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics,contentDetails&id=${process.env.YOUTUBE_CHANNEL_ID}&key=${process.env.YOUTUBE_API_KEY}`)
+
+  return await response.json()
+}
+
+const stats = await getYouTubeStatistics()
+const videos = await getLatestYoutubeVideo()
 ---
 <Layout pageTitle="home">
       <p class="mb-2 text-lg">Delicious Reverie is the personal home of <a class="underline" href="/about-benjamin-read">Benjamin Read</a> on the web.</p>
@@ -98,11 +105,11 @@ const { items } = await getLatestYoutubeVideo()
       <a class="btn btn-primary normal-case" href="/tags/documentation/">&rarr; See all {res[2].data?.listPosts?.meta.totalCount} tech docs</a>
       <hr/>
       <h2 class="text-3xl mt-8 tracking-wide">📼 YouTube Channel</h2>
-      <p class="text-inherit text-lg">I also run a YouTube channel called "The Coding Cocoon" where I teach young adults how to code and design.</p>
+      <p class="text-inherit text-lg mb-2">I also run a YouTube channel called "The Coding Cocoon" where I teach young adults how to code and design.</p>
+      <p class="text-inherit text-lg">The channel currently has {stats.items[0].statistics.subscriberCount} subscribers and {stats.items[0].statistics.viewCount} views.</p>
       <h3 class="text-2xl mt-8 mb-2 tracking-wide">Latest video:</h3>
-      <!-- <a href={items[0].id.videoId}><img src={items[0].snippet.thumbnails.high.url} alt="" /></a> -->
-      <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${items[0].id.videoId}` }} />
-      <h4 class="text-xl mt-8 tracking-wide">{items[0].snippet.title}</h4>
-      <p class="text-inherit text-md">{items[0].snippet.description}</p>
+      <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${videos.items[0].id.videoId}` }} />
+      <h4 class="text-xl mt-8 tracking-wide">{videos.items[0].snippet.title}</h4>
+      <p class="text-inherit text-md">{videos.items[0].snippet.description}</p>
       <a href="">Visit </a>
 </Layout>

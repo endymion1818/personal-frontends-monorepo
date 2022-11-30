@@ -42,7 +42,7 @@ const content = getTagsArrayFromPostList(data)
           <article class="card bg-secondary">
             <div class="card-body">
               <h2 class="card-title text-inherit">
-                <a href={`/posts/${tag.slug}/`}>{tag.title}</a>
+                <a href={`/tags/${tag.slug}/`}>{tag.title}</a>
               </h2>
               {tag.description && <p class="text-inherit">{tag.description}</p>}
               {tag.posts.length ? (

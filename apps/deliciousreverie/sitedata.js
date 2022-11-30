@@ -6,29 +6,32 @@ export let menuItems = [{
   link: '/',
 }, {
   title: 'About',
-  link: '/about',
+  link: '/about/',
 }, {
   title: 'Links',
-  link: '/links',
+  link: '/links/',
 }, {
-  title: 'Archive',
-  link: '/posts',
+  title: 'All articles',
+  link: '/posts/',
+}, {
+  title: 'All topics',
+  link: '/tags/',
 }, {
   title: 'Contact',
-  link: '/contact',
+  link: '/contact/',
 }]
 
 export let footerMenuItems = [{
   title: 'Links',
   items: [{
     title: 'Talks',
-    link: '/tags/talks'
+    link: '/tags/talks/'
   }, {
     title: 'Published Content',
-    link: '/tags/published-content'
+    link: '/tags/published-content/'
   },{
     title: 'Documentation',
-    link: '/tags/documentation'
+    link: '/tags/documentation/'
   }]
 }, {
   title: 'Menu',

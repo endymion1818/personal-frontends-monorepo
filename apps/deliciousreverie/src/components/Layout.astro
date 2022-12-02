@@ -1,4 +1,6 @@
 ---
+
+import defaultShareCard from '../images/default-share-card.png'
 interface Props {
   pageTitle: string
   pageDescription?: string
@@ -22,6 +24,36 @@ import {
   socialLinks } from '../../sitedata';
 
 const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
+
+
+const seoProps = {
+  title: pageTitle ?? title,
+  description: pageDescription ?? subtitle,
+  openGraph: {
+    basic: {
+      title: pageTitle ?? title,
+      type: 'website',
+      image:  shareCard ?? defaultShareCard,
+    },
+    image: {
+      url:  shareCard ?? defaultShareCard,
+      type: 'image/png',
+      alt: 'Share card',
+    },
+    optional: {
+      description: subtitle,
+      locale: 'en-GB',
+      siteName: title,
+    }
+  },
+  twitter: {
+    card: 'summary',
+    site: '@muzzlehatch_',
+    creator: '@muzzlehatch_',
+  },
+}
+
+
 ---
 <html lang="en" data-theme="mytheme">
 <head>
@@ -32,8 +64,7 @@ const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
   <link rel="stylesheet" href="/styles/global.css">
   <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />
   <SEO
-    title={`${pageTitle} - ${title}`}
-    description={`${pageDescription || subtitle}`}
+    {...seoProps}
     canonical={canonical ? canonical : slug ? `${URL}/${slug}/` : ''}
    />
 </head>

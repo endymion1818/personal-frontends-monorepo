@@ -1,6 +1,11 @@
 ---
 import { Embeds } from "@frontends/embeds"
 
+const prettyDate = date => {
+  const dateifiedDate = new Date(date)
+  return new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).format(dateifiedDate)
+}
+
 interface Props {
   post?: {
     title: string
@@ -34,6 +39,7 @@ const { post } = Astro.props
     {post.embed?.link && (
       <Embeds embed={post.embed}/>
     )}
+    <p class="my-2">Published on <time datetime={post.publishDate}>{prettyDate(post.publishDate)}</time></p>
     {post?.tags?.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>

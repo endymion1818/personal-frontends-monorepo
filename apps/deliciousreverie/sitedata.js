@@ -11,10 +11,7 @@ export let menuItems = [{
   title: 'Links',
   link: '/links/',
 }, {
-  title: 'All articles',
-  link: '/posts/',
-}, {
-  title: 'All topics',
+  title: 'Articles',
   link: '/tags/',
 }, {
   title: 'Contact',

@@ -2,6 +2,7 @@
 import Layout from '../../components/Layout.astro'
 import getTagsArrayFromPostList from '../../components/getTagsArrayFromPostList'
 import postsQuery from '../../components/postsQuery'
+import Otters from '../../components/Otters.astro'
 interface Props {
     listPosts: {
       data: Array<{
@@ -60,4 +61,5 @@ const content = getTagsArrayFromPostList(data)
           </article>
       ))}
     </div>
+    <Otters />
 </Layout>

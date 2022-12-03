@@ -3,7 +3,6 @@
 <script>
   import useScrollHeightToChangeOpacity from "./useScrollHeightToChangeOpacity";
 
-  var treeSummer = document.getElementById('tree-summer');
 var rabbit0 = document.getElementById('rabbit-0');
   var rabbit1 = document.getElementById('rabbit-1');
   var rabbit3 = document.getElementById('rabbit-3');
@@ -14,7 +13,6 @@ var rabbit0 = document.getElementById('rabbit-0');
 
 
 window.addEventListener('scroll', function() {
-  useScrollHeightToChangeOpacity(treeSummer, 0, 100)
   useScrollHeightToChangeOpacity(rabbit0, 5, 15)
   useScrollHeightToChangeOpacity(rabbit1, 20, 25)
   useScrollHeightToChangeOpacity(rabbit3, 30, 40)
@@ -69,8 +67,8 @@ aside {
   bottom: -5px;
 }
 #tree-summer {
-  opacity: 0.2;
-  transition: opacity 5s ease-in-out;
+  opacity: 0.8;
+
 }
 .rabbits {
   opacity: 0;

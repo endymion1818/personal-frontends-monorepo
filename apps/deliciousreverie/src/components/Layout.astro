@@ -1,5 +1,4 @@
 ---
-
 import defaultShareCard from '../images/default-share-card.png'
 interface Props {
   pageTitle: string
@@ -24,7 +23,6 @@ import {
   socialLinks } from '../../sitedata';
 
 const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
-
 
 const seoProps = {
   title: pageTitle ?? title,
@@ -52,8 +50,6 @@ const seoProps = {
     creator: '@muzzlehatch_',
   },
 }
-
-
 ---
 <html lang="en" data-theme="mytheme">
 <head>

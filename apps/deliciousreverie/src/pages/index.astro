@@ -3,6 +3,7 @@ import { ArticleCard } from '@frontends/article-card'
 import { Embeds } from '@frontends/embeds';
 import Layout from '../components/Layout.astro'
 import prettyNumber from '../components/prettyNumber';
+import Rabbits from '../components/Rabbits.astro'
 
 const getter = async (entryId) => {
   const response = await fetch(
@@ -113,4 +114,5 @@ const videos = await getLatestYoutubeVideo()
       <h4 class="text-xl mt-8 tracking-wide">{videos.items[0].snippet.title}</h4>
       <p class="text-inherit text-md mb-4">{videos.items[0].snippet.description}</p>
       <a class="btn btn-primary normal-case" href="https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ">See all videos</a>
+      <Rabbits />
 </Layout>

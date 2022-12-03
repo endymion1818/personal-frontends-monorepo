@@ -1,23 +1,13 @@
 ---
 ---
 <script>
+import { useScrollHeightToChangeOpacity } from "./useScrollHeightToChangeOpacity";
 
 var frame2 = document.getElementById('frame-2-otter-in')
   var frame4 = document.getElementById('frame-4-otter-turning-2')
   var frame5 = document.getElementById('frame-5-otter-questing')
   var frame6 = document.getElementById('frame-6-otter-surfacing-1')
 
-function getScrollPercent() {
-    return (document.documentElement.scrollTop ||document.body.scrollTop) / ((document.documentElement.scrollHeight||document.body.scrollHeight) - document.documentElement.clientHeight) * 100;
-}
-
-function useScrollHeightToChangeOpacity(domElement, inHeight, outHeight){
-    if (getScrollPercent() > inHeight &&  getScrollPercent() < outHeight){
-    domElement.classList.add('visible')
-  } else {
-    domElement.classList.remove('visible')
-  }
-}
 
 window.addEventListener('scroll', function() {
   useScrollHeightToChangeOpacity(frame2, 5, 15)

@@ -1,13 +1,12 @@
 ---
 ---
 <script>
-import { useScrollHeightToChangeOpacity } from "./useScrollHeightToChangeOpacity";
+import useScrollHeightToChangeOpacity from "./useScrollHeightToChangeOpacity"
 
 var frame2 = document.getElementById('frame-2-otter-in')
   var frame4 = document.getElementById('frame-4-otter-turning-2')
   var frame5 = document.getElementById('frame-5-otter-questing')
   var frame6 = document.getElementById('frame-6-otter-surfacing-1')
-
 
 window.addEventListener('scroll', function() {
   useScrollHeightToChangeOpacity(frame2, 5, 15)

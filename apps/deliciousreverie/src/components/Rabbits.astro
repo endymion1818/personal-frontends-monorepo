@@ -1,7 +1,7 @@
 ---
 ---
 <script>
-  import { useScrollHeightToChangeOpacity } from "./useScrollHeightToChangeOpacity";
+  import useScrollHeightToChangeOpacity from "./useScrollHeightToChangeOpacity";
 
   var treeSummer = document.getElementById('tree-summer');
 var rabbit0 = document.getElementById('rabbit-0');
@@ -75,6 +75,9 @@ aside {
 .rabbits {
   opacity: 0;
   transition: opacity 1s ease-in-out;
+}
+.visible {
+  opacity: 1;
 }
 #tree-winter,
 #tree-roots {

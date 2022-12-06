@@ -56,7 +56,7 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 ---
-<Layout pageTitle="home" pageDescription={post.description} canonical={post.canonicalLink} slug={post.slug}>
+<Layout pageTitle="home" pageDescription={post.description} slug={`posts/${post.slug}`} canonical={post.canonicalLink}>
     <h1 class="text-4xl mb-4">{post.title}</h1>
     {post.embed?.link && (
       <Embeds embed={post.embed} />

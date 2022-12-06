@@ -1,5 +1,7 @@
 export let title = 'Delicious Reverie';
 export let subtitle = "Benjamin Read's code garden."
+export let siteUrl = "https://deliciousreverie.co.uk"
+export let siteLanguage = 'en-GB'
 
 export let menuItems = [{
   title: 'Home',

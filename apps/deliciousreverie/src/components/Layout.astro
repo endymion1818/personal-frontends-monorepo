@@ -24,12 +24,14 @@ import {
 
 const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
 
+const seoTitle = pageTitle ? `${pageTitle} - ${title}`: title
+
 const seoProps = {
-  title: pageTitle ?? title,
+  title: seoTitle,
   description: pageDescription ?? subtitle,
   openGraph: {
     basic: {
-      title: pageTitle ?? title,
+      title: seoTitle,
       type: 'website',
       image:  shareCard ?? defaultShareCard,
     },
@@ -55,7 +57,6 @@ const seoProps = {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
-  <title>{title}</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/styles/global.css">
   <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />

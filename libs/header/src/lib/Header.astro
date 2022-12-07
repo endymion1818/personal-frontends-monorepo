@@ -42,3 +42,11 @@ const {menuItems, logo, title, subtitle, url } = Astro.props;
     ): null }
   </div>
 </header>
+
+<style is:global>
+  a.header--logo > span {
+    font-size: 5rem;
+    line-height: 0.8;
+    text-shadow: 1px 1px 2px rgb(167, 162, 31), 0 0 1em rgb(142, 139, 75), 0 0 0.2em black;
+  }
+</style>

@@ -24,12 +24,14 @@ import {
 
 const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
 
+const seoTitle = pageTitle ? `${pageTitle} - ${title}`: title
+
 const seoProps = {
-  title: pageTitle ?? `${pageTitle} - ${title}`,
+  title: seoTitle,
   description: pageDescription ?? subtitle,
   openGraph: {
     basic: {
-      title: pageTitle ?? title,
+      title: seoTitle,
       type: 'website',
       image:  shareCard ?? defaultShareCard,
     },

@@ -13,7 +13,8 @@ interface Props {
 const {menuItems, logo, title, subtitle, url } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1);
+// @ts-ignore
+const currentPath = pathname.slice(1).replaceAll("/","");
 ---
 <header class="bg-accent">
   <div class="mx-auto">
@@ -36,11 +37,14 @@ const currentPath = pathname.slice(1);
   <div class="navbar max-w-contain mx-auto flex-1 justify-start">
     {menuItems?.length ? (
       <ul class="header--navigation overflow-y-auto">
-        {menuItems.map(item => (
+        {menuItems.map(item => {
+          // @ts-ignore
+          const linkString = item.link.replaceAll("/", "")
+          return (
           <li class="text-white">
-            <a class={`btn ${item.link.slice(1) === currentPath ? `` : `btn-ghost` } normal-case`} href={item.link}>{item.title}</a>
+            <a class={`btn ${linkString === currentPath ? `` : `btn-ghost` } normal-case`} href={item.link}>{item.title}</a>
           </li>
-        ))}
+        )})}
       </ul>
     ): null }
   </div>

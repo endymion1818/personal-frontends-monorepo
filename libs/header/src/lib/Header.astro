@@ -11,6 +11,9 @@ interface Props {
 }
 
 const {menuItems, logo, title, subtitle, url } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
 ---
 <header class="bg-accent">
   <div class="mx-auto">
@@ -35,7 +38,7 @@ const {menuItems, logo, title, subtitle, url } = Astro.props;
       <ul class="header--navigation overflow-y-auto">
         {menuItems.map(item => (
           <li class="text-white">
-            <a class="btn btn-ghost normal-case" href={item.link}>{item.title}</a>
+            <a class={`btn ${item.link.slice(1) === currentPath ? `` : `btn-ghost` } normal-case`} href={item.link}>{item.title}</a>
           </li>
         ))}
       </ul>

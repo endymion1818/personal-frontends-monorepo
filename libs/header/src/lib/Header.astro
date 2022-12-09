@@ -42,7 +42,7 @@ const currentPath = pathname.slice(1).replaceAll("/","");
           const linkString = item.link.replaceAll("/", "")
           return (
           <li class="text-white">
-            <a class={`btn ${linkString === currentPath ? `` : `btn-ghost` } normal-case`} href={item.link}>{item.title}</a>
+            <a class={`btn ${!linkString === currentPath ? `` : `btn-ghost` } normal-case`} href={item.link}>{item.title}</a>
           </li>
         )})}
       </ul>

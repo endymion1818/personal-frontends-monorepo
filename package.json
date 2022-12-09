@@ -6,8 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "postinstall": "node ./tools/scripts/patch-nx-cli.js",
-    "pagefind": "pagefind"
+    "postinstall": "node ./tools/scripts/patch-nx-cli.js"
   },
   "private": true,
   "dependencies": {},
@@ -25,7 +24,6 @@
     "autoprefixer": "^10.4.12",
     "daisyui": "^2.33.0",
     "nx": "14.7.5",
-    "pagefind": "^0.10.4",
     "postcss": "^8.4.18",
     "prettier": "^2.6.2",
     "sass": "^1.56.1",

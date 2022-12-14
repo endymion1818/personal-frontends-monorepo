@@ -74,6 +74,8 @@ const getYouTubeStatistics = async () => {
 const stats = await getYouTubeStatistics()
 const videos = await getLatestYoutubeVideo()
 ---
+<script src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs" type="module"></script>
+
 <Layout pageTitle="home">
       <p class="mb-2 text-lg">Delicious Reverie is the personal home of <a class="underline" href="/about-benjamin-read">Benjamin Read</a> on the web.</p>
       <p class="mb-4 text-lg">I'm an experienced <strong>Developer Relations</strong> product evangelist and community builder, a Senior <strong>JavaScript Software Engineer</strong> with experience of FinTech and PropTech, and a literature buff.</p>
@@ -115,4 +117,7 @@ const videos = await getLatestYoutubeVideo()
       <p class="text-inherit text-md mb-4">{videos.items[0].snippet.description}</p>
       <a class="btn btn-primary normal-case" href="https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ">See all videos</a>
       <Rabbits />
+      <hr class="my-8 border-1 border-slate-600"/>
+      <h2 class="text-2xl mb-4">Webrings</h2>
+      <the-claw-webring-widget />
 </Layout>

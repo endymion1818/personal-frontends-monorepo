@@ -49,9 +49,9 @@ export const get = () => rss({
   // see "Generating items" section for required frontmatter and advanced use cases
   items: data.listPosts.data.map(page => ({
     title: page.title,
-    description: page.publishDate,
+    description: page.description,
     link: `${siteUrl}/posts/${page.slug}/`,
-    pubDate: page.datePublished,
+    pubDate: page.publishDate,
   })),
   // (optional) inject custom xml
   customData: `<language>${siteLanguage}</language>`,

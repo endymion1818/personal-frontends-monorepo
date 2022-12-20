@@ -59,5 +59,9 @@ export let socialLinks = {
   github: {
     title: "github",
     link: "https://github.com/endymion1818"
+  },
+  rss: {
+    title: "RSS Feed",
+    link: "https://deliciousreverie.co.uk/rss.xml"
   }
 }

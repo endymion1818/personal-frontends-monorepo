@@ -69,6 +69,11 @@ const { footerMenuItems, logo, title, acknowledgementText, socialLinks, url } = 
               </svg>
             </a>
           )}
+          {socialLinks.rss && (
+            <a href={socialLinks.rss.link} title={socialLinks.rss.title}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g class="fill-current hover:fill-white"><path d="M6.548 20.749a3.173 3.173 0 1 1-6.346 0 3.173 3.173 0 0 1 6.346 0ZM0 11.944c0 .439.344.8.782.822 3.137.16 5.247 1.302 7.19 3.255 1.91 1.918 3.125 4.669 3.334 7.166a.824.824 0 0 0 .82.755h2.949a.824.824 0 0 0 .823-.867C15.478 14.85 9.102 8.6.866 8.188A.824.824 0 0 0 0 9.011v2.933Z"/><path d="M0 3.818c0 .443.35.806.791.823 10.102.4 18.221 8.415 18.626 18.51.017.442.38.791.822.791h2.937A.824.824 0 0 0 24 23.09C23.57 10.372 13.576.482.852.058A.824.824 0 0 0 0 .882v2.936Z"/></g></svg>
+            </a>
+          )}
       </div>
       ) : null}
     </div>

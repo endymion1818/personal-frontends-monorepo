@@ -8,6 +8,15 @@
 # dependencies
 node_modules
 
+# yarn2 files
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.vscode
+
 # IDEs and editors
 /.idea
 .project
@@ -18,7 +27,7 @@ node_modules
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

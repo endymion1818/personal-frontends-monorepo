@@ -9,7 +9,6 @@
     "postinstall": "node ./tools/scripts/patch-nx-cli.js"
   },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",

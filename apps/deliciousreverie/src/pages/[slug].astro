@@ -35,7 +35,6 @@ export async function getStaticPaths() {
   ).then (
     response => response.json()
   )
-
   return data.data.listPages.data.map(page => {
     return {
       params: { slug: page.slug },

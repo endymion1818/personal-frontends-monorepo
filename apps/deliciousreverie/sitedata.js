@@ -44,14 +44,6 @@ export let socialLinks = {
     title: "LinkedIn",
     link: "https://www.linkedin.com/in/benjaminread1980/"
   },
-  twitter: {
-    title: "twitter",
-    link: "https://www.twitter.com/muzzlehatch_"
-  },
-  reddit: {
-    title: "reddit",
-    link: "https://www.reddit.com/u/endymion1818-1819"
-  },
   youtube: {
     title: "youtube",
     link: "https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ"

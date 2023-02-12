@@ -62,11 +62,11 @@ const seoProps = {
   <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />
   <SEO
     {...seoProps}
-    canonical={canonical ? canonical : slug ? `${URL}/${slug}/` : ''}
+    canonical={canonical ? canonical : slug ? `/${slug}/` : ''}
    />
 </head>
 <body class="bg-secondary text-black leading-relaxed">
-    <Header title={title} menuItems={menuItems} subtitle={subtitle} url={URL} />
+    <Header title={title} menuItems={menuItems} subtitle={subtitle} url={`/${slug}/`} />
     <main class="max-w-contain mx-auto py-10" id="main">
       <slot />
     </main>
@@ -75,6 +75,6 @@ const seoProps = {
         <blockquote><h2 class="text-4xl">“Wisest are they who know they do not know.”</h2><attr>— Jostein Gaarder</attr></blockquote>
       </div>
     </div>
-    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={URL}/>
+    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={`/${slug}/`}/>
 </body>
 </html>

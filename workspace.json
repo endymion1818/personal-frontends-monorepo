@@ -7,6 +7,7 @@
     "embeds": "libs/embeds",
     "footer": "libs/footer",
     "format-date": "libs/format-date",
+    "freebabylon5": "apps/freebabylon5",
     "header": "libs/header",
     "rich-text-renderer": "libs/rich-text-renderer"
   }

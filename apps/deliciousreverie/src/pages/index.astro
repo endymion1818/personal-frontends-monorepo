@@ -1,6 +1,7 @@
 ---
 import { ArticleCard } from '@frontends/article-card'
 import { Embeds } from '@frontends/embeds';
+import { stringify } from 'postcss';
 import Layout from '../components/Layout.astro'
 import prettyNumber from '../components/prettyNumber';
 import Rabbits from '../components/Rabbits.astro'
@@ -74,6 +75,7 @@ const getYouTubeStatistics = async () => {
 
 const stats = await getYouTubeStatistics()
 const videos = await getLatestYoutubeVideo()
+
 ---
 <script src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs" type="module"></script>
 
@@ -89,7 +91,7 @@ const videos = await getLatestYoutubeVideo()
             ))}
           </div>
         ) : null}
-      <a class="btn btn-primary mb-4 normal-case" href="/tags/talks">&rarr; See all {res[0].data?.listPosts?.meta.totalCount} engineering posts</a>
+      <a class="btn btn-primary mb-6 normal-case" href="/tags/talks">&rarr; See all {res[0].data?.listPosts?.meta.totalCount} posts about engineering</a>
       <h2 class="text-3xl tracking-wide">🎙 Recent Talks & Podcasts:</h2>
       {res[1].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">

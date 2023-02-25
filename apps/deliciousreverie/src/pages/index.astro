@@ -1,6 +1,7 @@
 ---
 import { ArticleCard } from '@frontends/article-card'
 import { Embeds } from '@frontends/embeds';
+import { stringify } from 'postcss';
 import Layout from '../components/Layout.astro'
 import prettyNumber from '../components/prettyNumber';
 import Rabbits from '../components/Rabbits.astro'
@@ -53,6 +54,7 @@ const getter = async (entryId) => {
 }
 
 const res = await Promise.all([
+  getter('637b96962d51b300089a2441'),
   getter('63278ac9dbaa390009981432'),
   getter('63278b34dbaa39000998143a'),
   getter('637b8aa4d9d6200008ab30e3')
@@ -73,6 +75,7 @@ const getYouTubeStatistics = async () => {
 
 const stats = await getYouTubeStatistics()
 const videos = await getLatestYoutubeVideo()
+
 ---
 <script src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs" type="module"></script>
 
@@ -80,7 +83,7 @@ const videos = await getLatestYoutubeVideo()
       <p class="mb-2 text-lg">Delicious Reverie is the personal home of <a class="underline" href="/about-benjamin-read">Benjamin Read</a> on the web.</p>
       <p class="mb-4 text-lg">I'm an experienced <strong>Developer Relations</strong> product evangelist and community builder, a Senior <strong>JavaScript Software Engineer</strong> with experience of FinTech and PropTech, and a literature buff.</p>
       <a class="btn btn-primary normal-case mb-6" href="/about-benjamin-read">More about me</a>
-      <h2 class="text-3xl tracking-wide">🎙 Recent Talks & Podcasts:</h2>
+      <h2 class="text-3xl mt-8 tracking-wide">⚙ Recent posts about engineering:</h2>
       {res[0].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">
             {res[0].data?.listPosts?.data.map(post => (
@@ -88,8 +91,8 @@ const videos = await getLatestYoutubeVideo()
             ))}
           </div>
         ) : null}
-      <a class="btn btn-primary normal-case" href="/tags/talks">&rarr; See all {res[0].data?.listPosts?.meta.totalCount} talks and podcasts</a>
-      <h2 class="text-3xl mt-8 tracking-wide">✍️ Recently Published Articles:</h2>
+      <a class="btn btn-primary mb-6 normal-case" href="/tags/talks">&rarr; See all {res[0].data?.listPosts?.meta.totalCount} posts about engineering</a>
+      <h2 class="text-3xl mt-8 tracking-wide">🎙 Recent Talks & Podcasts:</h2>
       {res[1].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">
             {res[1].data?.listPosts?.data.map(post => (
@@ -97,8 +100,8 @@ const videos = await getLatestYoutubeVideo()
             ))}
           </div>
         ) : null}
-      <a class="btn btn-primary normal-case" href="/tags/published-content/">&rarr; See all {res[1].data?.listPosts?.meta.totalCount} published articles</a>
-      <h2 class="text-3xl mt-8 tracking-wide">📝 Recent Technical Documentation:</h2>
+      <a class="btn btn-primary normal-case" href="/tags/talks">&rarr; See all {res[1].data?.listPosts?.meta.totalCount} talks and podcasts</a>
+      <h2 class="text-3xl mt-8 tracking-wide">✍️ Recently Published Articles:</h2>
       {res[2].data?.listPosts?.data.length ? (
           <div class="grid grid-cols-1 gap-4">
             {res[2].data?.listPosts?.data.map(post => (
@@ -106,7 +109,16 @@ const videos = await getLatestYoutubeVideo()
             ))}
           </div>
         ) : null}
-      <a class="btn btn-primary normal-case" href="/tags/documentation/">&rarr; See all {res[2].data?.listPosts?.meta.totalCount} tech docs</a>
+      <a class="btn btn-primary normal-case" href="/tags/published-content/">&rarr; See all {res[2].data?.listPosts?.meta.totalCount} published articles</a>
+      <h2 class="text-3xl mt-8 tracking-wide">📝 Recent Technical Documentation:</h2>
+      {res[3].data?.listPosts?.data.length ? (
+          <div class="grid grid-cols-1 gap-4">
+            {res[3].data?.listPosts?.data.map(post => (
+              <ArticleCard post={post}/>
+            ))}
+          </div>
+        ) : null}
+      <a class="btn btn-primary normal-case" href="/tags/documentation/">&rarr; See all {res[3].data?.listPosts?.meta.totalCount} tech docs</a>
       <hr/>
       <h2 class="text-3xl mt-8 pb-4 tracking-wide">📼 YouTube Channel</h2>
       <p class="text-inherit text-lg mb-2">I also run a YouTube channel called "The Coding Cocoon" where I teach young adults how to code and design.</p>

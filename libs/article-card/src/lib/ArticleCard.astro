@@ -35,7 +35,7 @@ const { post } = Astro.props
     <h2 class="card-title text-2xl text-inherit mb-2 tracking-wide">
       <a class="hover:underline" href={`/posts/${post.slug}/`}>{post.title}</a>
     </h2>
-    {(!post.embed && post.description) && <p class="text-inherit text-lg">{post.description}</p>}
+    <p class="text-inherit text-lg">{post.description}</p>
     {post.embed?.link && (
       <Embeds embed={post.embed}/>
     )}

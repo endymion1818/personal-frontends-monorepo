@@ -1,0 +1,30 @@
+---
+import shiki from 'shiki'
+
+const { poetry } = Astro.props
+
+let poetryOutput
+
+await shiki.getHighlighter({
+  theme: 'poimandres',
+}).then(highlighter => {
+  poetryOutput = highlighter.codeToHtml(poetry, { lang: 'markdown' })
+})
+---
+<div class="poetry text-black" set:html={poetryOutput} />
+
+<style is:global>
+  .poetry > pre.shiki {
+    background-color: transparent!important;
+  }
+  pre.shiki {
+    overflow-y: auto;
+    background-color: transparent;
+  }
+  pre.shiki > code {
+    font-family: sans-serif;
+  }
+  pre.shiki > code > * > * {
+    color: black!important;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import RenderCode from "./RenderCode.astro"
+import RenderPoetry from "./RenderPoetry.astro"
 interface Props {
   data: any
 }
@@ -56,6 +57,9 @@ const { data } = Astro.props
       )}
       {field.type === 'code' && (
         <RenderCode code={field.data.code} />
+      )}
+      {field.type === 'poetry' && (
+        <RenderPoetry poetry={field.data.poetry} />
       )}
     </>
   ))}

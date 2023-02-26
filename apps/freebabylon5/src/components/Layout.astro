@@ -8,8 +8,6 @@ interface Props {
   slug?: string
 }
 
-const { URL } = process.env
-
 import { SEO } from 'astro-seo'
 import { Header } from '@frontends/header'
 import { Footer } from '@frontends/footer'
@@ -22,7 +20,7 @@ import {
   acknowledgementText,
   socialLinks } from '../../sitedata';
 
-const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
+const { pageTitle, pageDescription, shareCard, slug } = Astro.props
 
 const seoTitle = pageTitle ? `${pageTitle} - ${title}`: title
 

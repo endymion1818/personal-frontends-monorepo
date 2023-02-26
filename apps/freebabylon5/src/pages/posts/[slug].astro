@@ -16,7 +16,7 @@ export async function getStaticPaths() {
       body: JSON.stringify({
         query: `
           {
-            listPosts(limit: 200) {
+            listArticles(limit: 200) {
               data {
                 id
                 title
@@ -48,7 +48,7 @@ export async function getStaticPaths() {
     response => response.json()
   )
 
-  return data.data.listPosts.data.map((post) => {
+  return data.data.listArticles.data.map((post) => {
     return {
       params: { slug: post.slug },
       props: { post },

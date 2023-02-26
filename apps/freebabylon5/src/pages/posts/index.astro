@@ -13,7 +13,7 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listPosts(limit: 200, sort: publishDate_DESC) {
+          listArticles(limit: 200, sort: publishDate_DESC) {
             data {
               id
               title
@@ -39,16 +39,16 @@ const response = await fetch(
 );
 const { data } = await response.json();
 
-if(data.listPosts.data.length >= 200) {
+if(data.listArticles.data.length >= 200) {
   console.log('time to paginate!');
   return false
 }
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" slug="posts">
     <h1 class="text-4xl">Archive</h1>
-    {data?.listPosts?.data.length ? (
+    {data?.listArticles?.data.length ? (
         <div class="grid grid-cols-1 gap-4 py-4">
-          {data?.listPosts?.data.map(post => (
+          {data?.listArticles?.data.map(post => (
             <ArticleCard post={post}/>
           ))}
         </div>

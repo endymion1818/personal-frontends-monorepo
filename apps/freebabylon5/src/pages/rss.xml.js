@@ -14,7 +14,7 @@ const getData = async () => {
       body: JSON.stringify({
         query: `
           {
-            listPosts(limit: 200, sort: publishDate_DESC) {
+            listArticles(limit: 200, sort: publishDate_DESC) {
               data {
                 id
                 title
@@ -47,7 +47,7 @@ export const get = () => rss({
   // list of `<item>`s in output xml
   // simple example: generate items for every md file in /src/pages
   // see "Generating items" section for required frontmatter and advanced use cases
-  items: data.listPosts.data.map(page => ({
+  items: data.listArticles.data.map(page => ({
     title: page.title,
     description: page.description,
     link: `${siteUrl}/posts/${page.slug}/`,

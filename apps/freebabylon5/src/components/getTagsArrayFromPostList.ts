@@ -10,7 +10,7 @@ interface Tags {
 }
 
 const getTagsArrayFromPostsList = (data) => {
-  const tagsArrayFromPostsList = data.listPosts.data.reduce((prev, { tags, ...post }) => {
+  const tagsArrayFromPostsList = data.listArticles.data.reduce((prev, { tags, ...post }) => {
     tags.forEach(tag => {
       prev.set(tag.slug, {
         title: tag.title,

@@ -15,16 +15,13 @@ await shiki.getHighlighter({
 
 <style is:global>
   .poetry > pre.shiki {
+    overflow-y: auto;
     background-color: transparent!important;
   }
-  pre.shiki {
-    overflow-y: auto;
-    background-color: transparent;
-  }
-  pre.shiki > code {
+  .poetry > pre.shiki > code {
     font-family: sans-serif;
   }
-  pre.shiki > code > * > * {
+  .poetry > pre.shiki > * > * {
     color: black!important;
   }
 </style>

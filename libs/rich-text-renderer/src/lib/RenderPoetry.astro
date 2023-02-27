@@ -11,7 +11,7 @@ await shiki.getHighlighter({
   poetryOutput = highlighter.codeToHtml(poetry, { lang: 'markdown' })
 })
 ---
-<div class="poetry text-black" set:html={poetryOutput} />
+<div class="poetry" set:html={poetryOutput} />
 
 <style is:global>
   .poetry > pre.shiki {
@@ -21,7 +21,7 @@ await shiki.getHighlighter({
   .poetry > pre.shiki > code {
     font-family: sans-serif;
   }
-  .poetry > pre.shiki > * > * {
+  .poetry > pre.shiki > code > * > * {
     color: black!important;
   }
 </style>

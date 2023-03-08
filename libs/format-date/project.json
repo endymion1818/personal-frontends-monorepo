@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "format-date",
+  "sourceRoot": "libs/format-date",
+  "projectType": "library",
+  "targets": {
+    "check": {
+      "executor": "@nxtensions/astro:check"
+    }
+  },
+  "tags": []
+}

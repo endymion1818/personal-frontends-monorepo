@@ -1,0 +1,9 @@
+---
+const { datetime } = Astro.props
+
+const parsedDate = new Date(datetime)
+
+const formattedDateTime = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).format(parsedDate);
+
+---
+<time datetime={datetime}>{formattedDateTime}</time>

@@ -16,11 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@frontends/article-card": ["libs/article-card/src/index.js"],
+      "@frontends/embeds": ["libs/embeds/src/index.js"],
       "@frontends/footer": ["libs/footer/src/index.js"],
+      "@frontends/format-date": ["libs/format-date/src/index.js"],
       "@frontends/header": ["libs/header/src/index.js"],
       "@frontends/rich-text-renderer": ["libs/rich-text-renderer/src/index.js"],
-      "@frontends/s7css-s7css": ["libs/s7css/s7css/src/index.js"],
-      "@frontends/embeds": ["libs/embeds/src/index.js"]
+      "@frontends/s7css-s7css": ["libs/s7css/s7css/src/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,8 +1,8 @@
 ---
 import { RichTextRenderer } from "@frontends/rich-text-renderer"
 import { Embeds } from "@frontends/embeds"
+import { FormatDate } from "@frontends/format-date"
 import Layout from '../../components/Layout.astro'
-import { title } from "../../../sitedata";
 
 export async function getStaticPaths() {
   const data = await fetch(
@@ -59,6 +59,7 @@ const { post } = Astro.props;
 ---
 <Layout pageTitle={post.title} pageDescription={post.description} slug={`posts/${post.slug}`} canonical={post.canonicalLink}>
     <h1 class="text-4xl mb-4">{post.title}</h1>
+    <span>Published on <FormatDate datetime={post.publishDate} /></span>
     {post.embed?.link && (
       <Embeds embed={post.embed} />
   )}

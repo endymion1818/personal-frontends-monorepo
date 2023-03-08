@@ -6,6 +6,7 @@
     "deliciousreverie": "apps/deliciousreverie",
     "embeds": "libs/embeds",
     "footer": "libs/footer",
+    "format-date": "libs/format-date",
     "header": "libs/header",
     "rich-text-renderer": "libs/rich-text-renderer"
   }

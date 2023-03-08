@@ -1,0 +1,25 @@
+---
+import Layout from '../components/Layout.astro'
+---
+<script is:inline src="/qrcode.js"></script>
+<script>
+  var qrcode = new QRCode(document.getElementById("qrcode"));
+  var input = document.getElementById("input")
+
+  input.addEventListener('blur', function(e) {
+    qrcode.makeCode(e.target.value);
+  });
+  input.addEventListener("keydown", function(e) {
+    if (e.keyCode == 13) {
+      qrcode.makeCode(e.target.value);
+      }
+  })
+</script>
+<Layout pageTitle="QR Code Generator">
+      <h1 class="text-4xl">QR Code Generator</h1>
+      <p class="mb-4 text-lg">You can use this page to generate a QR code. The Code will always go straight to the destination and will not be changed or be blocked by a wall of adverts.</p>
+      <label class="font-bold" for="input">Type or paste below:</label>
+      <input id="input" class="mb-4" type="text" value="" style="width:100%"/>
+      <div class="font-bold">Your QR Code:</div>
+      <div id="qrcode"></div>
+</Layout>

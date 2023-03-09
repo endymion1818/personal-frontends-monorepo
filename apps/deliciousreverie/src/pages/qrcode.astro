@@ -20,6 +20,7 @@ import Layout from '../components/Layout.astro'
       <p class="mb-4 text-lg">You can use this page to generate a QR code. The Code will always go straight to the destination and will not be changed or be blocked by a wall of adverts.</p>
       <label class="font-bold" for="input">Type or paste below:</label>
       <input id="input" class="mb-4" type="text" value="" style="width:100%"/>
+      <button class="btn btn-primary mb-4" type="button" onclick="e => qrcode.makeCode(e.target.value)">Generate code</button>
       <div class="font-bold">Your QR Code:</div>
       <div id="qrcode"></div>
 </Layout>

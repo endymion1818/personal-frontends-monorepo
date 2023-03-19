@@ -35,7 +35,7 @@ const { post } = Astro.props
     {post.embed?.link && (
       <Embeds embed={post.embed}/>
     )}
-    <p class="my-2">Published on <FormatDate datetime={post.publishDate} /></p>
+    <p class="my-2">Published on <FormatDate datetime={post.publishDate}/></p>
     {post?.tags?.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>

@@ -1,4 +1,8 @@
 ---
+import { SEO } from 'astro-seo'
+import Header from './Header.astro'
+import Footer from './Footer.astro'
+
 import defaultShareCard from '../images/default-share-card.png'
 interface Props {
   pageTitle: string
@@ -7,12 +11,6 @@ interface Props {
   canonical?: string
   slug?: string
 }
-
-const { URL } = process.env
-
-import { SEO } from 'astro-seo'
-import { Header } from '@frontends/header'
-import { Footer } from '@frontends/footer'
 
 import {
   title,

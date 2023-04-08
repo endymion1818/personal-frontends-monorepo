@@ -1,9 +1,17 @@
 ---
 import Layout from '../components/Layout.astro'
-import { ArticleCard } from '../../../../libs/article-card/src';
+import { ArticleCard } from '@frontends/article-card';
+
+export interface Article {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  firstPublishedDate: string;
+}
 
 const response = await fetch(
-    process.env.WEBINY_READ_URL,
+    process.env.WEBINY_READ_URL as string,
   {
     method: 'POST',
     headers: {
@@ -31,7 +39,7 @@ const { data } = await response.json()
 <Layout pageTitle="home">
       {data?.listArticles?.data.length ? (
         <div class="grid grid-cols-1 gap-4">
-          {data?.listArticles?.data.map(article => (
+          {data?.listArticles?.data.map((article: Article) => (
             <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
           ))}
         </div>

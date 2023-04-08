@@ -1,7 +1,7 @@
-export let title = 'Delicious Reverie';
-export let subtitle = "Benjamin Read's code garden."
-export let siteUrl = "https://deliciousreverie.co.uk"
-export let siteLanguage = 'en-GB'
+export let title = '#FreeBabylon5';
+export let subtitle = "Our last, best hope to get Babylon 5 back on the air";
+export let siteUrl = "https://freebabylon5.com"
+export let siteLanguage = 'en-US'
 
 export let menuItems = [{
   title: 'Home',
@@ -16,44 +16,23 @@ export let menuItems = [{
   title: 'Articles',
   link: '/tags/',
 }, {
-  title: 'Contact',
-  link: '/contact/',
+  title: ' Watch Babylon 5',
+  link: '/watch/',
 }]
 
-export let footerMenuItems = [{
-  title: 'Links',
-  items: [{
-    title: 'Talks',
-    link: '/tags/talks/'
-  }, {
-    title: 'Published Content',
-    link: '/tags/published-content/'
-  },{
-    title: 'Documentation',
-    link: '/tags/documentation/'
-  }]
-}, {
-  title: 'Menu',
-  items: menuItems
-}]
-
-export let acknowledgementText = "Delicious Reverie is the blog of Benjamin Read. © Some rights are reserved."
+export let acknowledgementText = `Babylon 5, characters, names, and all related indicia are trademarks of Warner Bros. Entertainment, Inc. ©1994-${new Date().getFullYear()} All Rights Reserved.`
 
 export let socialLinks = {
   linkedin: {
-    title: "LinkedIn",
-    link: "https://www.linkedin.com/in/benjaminread1980/"
-  },
-  youtube: {
-    title: "youtube",
-    link: "https://www.youtube.com/channel/UCzbL3ZYvJWzJbrbHCgZLDJQ"
+    title: "Facebook",
+    link: "https://www.facebook.com/groups/freebabylon5/"
   },
   github: {
     title: "github",
-    link: "https://github.com/endymion1818"
+    link: "https://github.com/endymion1818/freebabylon5"
   },
   rss: {
     title: "RSS Feed",
-    link: "https://deliciousreverie.co.uk/rss.xml"
+    link: "https://freebabylon5.com/rss.xml"
   }
 }

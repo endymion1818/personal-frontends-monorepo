@@ -1,0 +1,61 @@
+---
+interface Props {
+  menuItems: Array<{
+    title: string,
+    link: string
+  }>;
+  logo?: string;
+  title: string;
+  subtitle: string;
+  url: string;
+}
+
+const {menuItems, logo, title, subtitle, url } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+// @ts-ignore
+const currentPath = pathname.slice(1).replaceAll("/","");
+console.log({ currentPath })
+---
+<header class="bg-accent header">
+  <div class="mx-auto">
+    <div class="bg-slate p-2">
+      <a href="#main" class="block skip-links btn btn-ghost w-40 border-secondary text-secondary p-4 normal-case">Skip links</a>
+    </div>
+  </div>
+  <div class=" max-w-contain mx-auto">
+    <div class="header--top py-11 text-white">
+      <a class="header--logo normal-case text-xl hover:text-underline" href={url}>
+      {logo ? (
+        <img class="w-6/8" src={logo}>
+        ) : (
+          <span class="font-display text-secondary text-5xl">{title || null}</span>
+      )}
+      </a>
+      {subtitle && <p class="font-display text-3xl mt-2">{subtitle}</p>}
+    </div>
+  </div>
+  <div class="navbar max-w-contain mx-auto flex-1 justify-start">
+    {menuItems?.length ? (
+      <ul class="header--navigation overflow-y-auto">
+        {menuItems.map(item => {
+          console.log(item.link.replace("/", ""))
+          return (
+          <li class="text-white">
+            <a class={
+              `btn
+              ${
+                // @ts-ignore
+                item.link.replaceAll("/", "") === currentPath ? `` : `btn-ghost`
+              }
+              normal-case`}
+              href={item.link}
+            >
+              {item.title}
+            </a>
+          </li>
+        )})}
+      </ul>
+    ): null }
+  </div>
+</header>

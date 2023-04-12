@@ -9,7 +9,7 @@ interface Props {
 }
 
 import { SEO } from 'astro-seo'
-import { Header } from '@frontends/header'
+import Header from '../components/Header.astro'
 import { Footer } from '@frontends/footer'
 
 import {
@@ -63,10 +63,12 @@ const seoProps = {
     canonical={`/${slug}/`}
    />
 </head>
-<body class="bg-secondary text-black leading-relaxed">
+<body class="bg-secondary text-white leading-relaxed">
     <Header title={title} menuItems={menuItems} subtitle={subtitle} url={`/${slug}/`} />
-    <main class="max-w-contain mx-auto py-10" id="main">
-      <slot />
+    <main class="relative bg-pattern py-6" id="main">
+      <div class="container">
+        <slot />
+      </div>
     </main>
     <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={`/${slug}/`}/>
 </body>

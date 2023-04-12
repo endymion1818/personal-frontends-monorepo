@@ -37,6 +37,7 @@ const response = await fetch(
 const { data } = await response.json()
 ---
 <Layout pageTitle="home">
+  <div class="container">
       {data?.listArticles?.data.length ? (
         <div class="grid grid-cols-1 gap-4">
           {data?.listArticles?.data.map((article: Article) => (
@@ -44,4 +45,5 @@ const { data } = await response.json()
           ))}
         </div>
       ) : null}
+    </div>
 </Layout>

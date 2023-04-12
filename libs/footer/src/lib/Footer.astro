@@ -22,9 +22,9 @@ interface Props {
 const { footerMenuItems, logo, title, acknowledgementText, socialLinks, url } = Astro.props;
 ---
 <footer class="bg-accent text-base-content">
-  <div class="py-10 max-w-contain mx-auto">
+  <div class="py-10 container mx-auto">
     <div class="footer gap-x-16 my-10">
-      <div>
+      <div class=" max-w-md">
         <a class="items-center grid-flow-col" href={url}>
           {logo ? <img class="max-w-xs" src={logo}> : <span class="font-display text-secondary text-3xl tracking-wide">{title}</span>}
         </a>
@@ -42,7 +42,6 @@ const { footerMenuItems, logo, title, acknowledgementText, socialLinks, url } = 
       ))}
     </div>
     <div class="footer items-center bg-grey-900 text-neutral-content">
-      <h3 class="text-xl">Where you can find me:</h3>
       {socialLinks ? (
         <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           {socialLinks.linkedin && (

@@ -14,7 +14,7 @@ module.exports = {
       center: true,
     },
     fontFamily: {
-      'display': ['Serpentine'],
+      'display': ['serpentine'],
     }
   },
   plugins: [require("daisyui")],
@@ -22,9 +22,9 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: "#333",
-          secondary: "#f7ebc1",
-          accent: "#331f33",
+          primary: "#428bca",
+          secondary: "#000",
+          accent: "#333",
         },
       },
       "luxury",

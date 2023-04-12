@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Serpentine';
+  src: url('/fonts/serpentine.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Serpentine';
+}
+.bg-pattern {
+  background-image: url('/images/bg-pattern.png')
+}
+.bg-pattern-light {
+  background-image: url('/images/bg-pattern-light.png')
+}
+.max-w-contain {
+  max-width: 30em;
+}
+@media (max-width: 640px) {
+  .max-w-contain {
+    padding: 0 1rem;
+  }
+}

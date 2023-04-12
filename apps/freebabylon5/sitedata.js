@@ -1,4 +1,4 @@
-export let title = '#FreeBabylon5';
+export let title = '#Free Babylon 5';
 export let subtitle = "Our last, best hope to get Babylon 5 back on the air";
 export let siteUrl = "https://freebabylon5.com"
 export let siteLanguage = 'en-US'
@@ -20,6 +20,20 @@ export let menuItems = [{
   link: '/watch/',
 }]
 
+export const footerMenuItems = [{
+  title: "Campaign Links",
+  items: menuItems
+}, {
+  title: "FreeBabylon 5 Links",
+  items: [{
+    title: "JMS Patreon page",
+    link: "https://www.patreon.com/syntheticworlds"
+  }, {
+    title: "Contact us",
+    link: "mailto:freebabylon5@aol.com"
+  }]
+}]
+
 export let acknowledgementText = `Babylon 5, characters, names, and all related indicia are trademarks of Warner Bros. Entertainment, Inc. ©1994-${new Date().getFullYear()} All Rights Reserved.`
 
 export let socialLinks = {
@@ -28,7 +42,7 @@ export let socialLinks = {
     link: "https://www.facebook.com/groups/freebabylon5/"
   },
   github: {
-    title: "github",
+    title: "Edit this site on GitHub",
     link: "https://github.com/endymion1818/freebabylon5"
   },
   rss: {

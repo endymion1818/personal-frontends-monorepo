@@ -1,8 +1,9 @@
 ---
+import FeatureImage from '../images/carousel-1.jpg';
 interface Props {
   menuItems: Array<{
-    title: string,
-    link: string
+    title: string;
+    link: string;
   }>;
   logo?: string;
   title: string;
@@ -10,52 +11,73 @@ interface Props {
   url: string;
 }
 
-const {menuItems, logo, title, subtitle, url } = Astro.props;
+const { menuItems, title, subtitle, url } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
 // @ts-ignore
-const currentPath = pathname.slice(1).replaceAll("/","");
-console.log({ currentPath })
+const currentPath = pathname.slice(1).replaceAll('/', '');
+const isHomePage = currentPath === '';
 ---
-<header class="bg-accent header">
-  <div class="mx-auto">
-    <div class="bg-slate p-2">
-      <a href="#main" class="block skip-links btn btn-ghost w-40 border-secondary text-secondary p-4 normal-case">Skip links</a>
-    </div>
-  </div>
-  <div class=" max-w-contain mx-auto">
-    <div class="header--top py-11 text-white">
-      <a class="header--logo normal-case text-xl hover:text-underline" href={url}>
-      {logo ? (
-        <img class="w-6/8" src={logo}>
-        ) : (
-          <span class="font-display text-secondary text-5xl">{title || null}</span>
-      )}
-      </a>
-      {subtitle && <p class="font-display text-3xl mt-2">{subtitle}</p>}
-    </div>
-  </div>
-  <div class="navbar max-w-contain mx-auto flex-1 justify-start">
-    {menuItems?.length ? (
-      <ul class="header--navigation overflow-y-auto">
-        {menuItems.map(item => {
-          console.log(item.link.replace("/", ""))
-          return (
-          <li class="text-white">
-            <a class={
-              `btn
-              ${
-                // @ts-ignore
-                item.link.replaceAll("/", "") === currentPath ? `` : `btn-ghost`
-              }
-              normal-case`}
-              href={item.link}
+
+<div class:list={new Set(["relative bg-pattern", isHomePage && "h-[60vh]"])}>
+  {isHomePage && (<img src={FeatureImage} alt="logo" class="absolute w-full" />)}
+  <a
+    href="#main"
+    class="hidden mt-4 -top-20 focus-visible:top-0 skip-links btn btn-ghost w-40 border-secondary text-secondary p-4 normal-case"
+    >Skip links</a
+  >
+  <div class="container pt-6">
+    <header
+      class="bg-slate-800 navbar rounded-lg shadow-lg bg-pattern-light relative"
+    >
+      <div class="navbar-start mx-auto">
+        <div class="bg-slate p-2">
+          <a
+            class="header--logo block uppercase text-xl hover:text-underline"
+            href='/'
+          >
+            <span class="font-display text-primary text-5xl drop-shadow-md"
+              >{title}</span
             >
-              {item.title}
-            </a>
-          </li>
-        )})}
-      </ul>
-    ): null }
+          </a>
+          {
+            subtitle && (
+              <p class="font-display text-sm mt-2 drop-shadow-sm">{subtitle}</p>
+            )
+          }
+        </div>
+      </div>
+      <div class="navbar mx-auto flex-1 justify-end">
+        {
+          menuItems?.length ? (
+            <ul class="header--navigation overflow-y-auto gap-2">
+              {menuItems.map((item, index) => {
+                const isLastItem =
+                  menuItems.length - 1 === index && `btn-primary`;
+                const isCurrentPage =
+                  item.link.replaceAll('/', '') === currentPath && `btn-ghost`;
+                return (
+                  <li class="text-white">
+                    <a
+                      class:list={
+                        new Set([
+                          `btn`,
+                          isCurrentPage,
+                          isLastItem,
+                          `normal-case focus-visible:ring focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`,
+                        ])
+                      }
+                      href={item.link}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null
+        }
+      </div>
+    </header>
   </div>
-</header>
+</div>

@@ -10,6 +10,7 @@ interface Props {
   logo?: string;
   title: string;
   url: string,
+  withPadding?: boolean;
   acknowledgementText: string;
   socialLinks: {
     [key: string]: {
@@ -19,10 +20,13 @@ interface Props {
   }
 }
 
-const { footerMenuItems, logo, title, acknowledgementText, socialLinks, url } = Astro.props;
+const { footerMenuItems, logo, title, acknowledgementText, socialLinks, url, withPadding } = Astro.props;
+
+
+const footerClass = withPadding ? 'px-6' : '';
 ---
 <footer class="bg-accent text-base-content">
-  <div class="py-10 container mx-auto">
+  <div class:list={["py-10 container mx-auto", footerClass]}>
     <div class="footer gap-x-16 my-10">
       <div class=" max-w-md">
         <a class="items-center grid-flow-col" href={url}>

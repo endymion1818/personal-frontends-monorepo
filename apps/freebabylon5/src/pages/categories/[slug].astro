@@ -29,14 +29,16 @@ export async function getStaticPaths() {
     };
   });
 }
-// const { tag } = Astro.props;
+const { tag } = Astro.props;
 ---
-<!-- <Layout pageTitle={`Tags with the topic ${tag.title}`} pageDescription={tag.description} slug={`tags/${tag.slug}`}>
-    <h1 class="text-4xl">{tag.title}:</h1>
+<Layout pageTitle={`Tags with the topic ${tag.title}`} pageDescription={tag.description} slug={`tags/${tag.slug}`}>
+    <div class="container">
+      <h1 class="text-4xl">Articles about {tag.title}:</h1>
     <ul class="list-disc pl-4">
       {tag.posts.map(post => (
         <li><a class="hover:underline p-1 inline-block" href={`/posts/${post.slug}/`}>{post.title}</a></li>
       ))}
     </ul>
-</Layout> -->
+    </div>
+</Layout>
 <div></div>

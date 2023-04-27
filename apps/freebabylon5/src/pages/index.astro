@@ -1,7 +1,8 @@
 ---
 import Layout from '../components/Layout.astro'
 import { ArticleCard } from '@frontends/article-card';
-
+import FeatureImage from '../images/carousel-change.jpg';
+import FeatureImage2 from '../images/carousel-jumppoint.jpg';
 export interface Article {
   id: string;
   title: string;
@@ -37,17 +38,45 @@ const response = await fetch(
 const { data } = await response.json()
 ---
 <Layout pageTitle="home">
-  <div class="container grid gap-4">
-      {data?.listArticles?.data.length ? (
-        <div class="w-3/4">
-          {data?.listArticles?.data.map((article: Article) => (
-            <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
-            <hr class="border border-b-2 border-b-gray-300" />
-          ))}
-        </div>
-      ) : null}
-      <div class="w-1/4">
-        sidebar
-      </div>
+  <div class="container max-w-lg pb-6">
+    <div class="alert alert-info flex-col">
+      <h1 class="text-xl font-bold">Babylon 5 is a game-changing, ground breaking, emmy-award winning TV series.</h1>
+      <p class="w-full">But it is in danger of becoming lost and forgotten.</p>
+    <p>We are not going to let that happen. Please join us and help #FreeBabylon5</p>
     </div>
+  </div>
+  <div class="container px-6">
+    <h1 class="text-xl">Latest News</h1>
+  </div>
+  <div class="container flex gap-4 px-6">
+    {data?.listArticles?.data.length ? (
+      <div class="w-3/4">
+        {data?.listArticles?.data.map((article: Article) => (
+          <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
+          <hr class="border border-b-2 border-b-gray-300" />
+        ))}
+      </div>
+    ) : null}
+    <div class="w-1/4">
+      sidebar
+    </div>
+  </div>
+  <img src={FeatureImage} loading="lazy" alt="Delenn, Garibaldi, G'kar, Franklin and Sheridan overlooking the station" class="w-full my-6" />
+  <div class="container max-w-lg pb-6">
+    <div class="alert alert-error flex-col">
+      <h2 class="text-xl font-bold">Our Last, Best Hope.</h2>
+        <p>The Babylon 5 writers, actors and community changed our lives. It changed TV forever.</p>
+        <p class="w-full">This might be the last, best hope we have.</p>
+        <a class="btn btn-secondary btn-glass" href="/about">About the campaign</a>
+
+    </div>
+  </div>
+  <img src={FeatureImage2} loading="lazy" alt="Babylon 5" class="w-full mb-6" />
+  <div class="container max-w-lg pb-6">
+    <div class="alert alert-info flex-col">
+      <h2 class="text-xl font-bold">Jump point forming!</h2>
+        <p>Visit the Jump Point and discover other places where Babylon 5 is being discussed.</p>
+        <a class="btn btn-secondary btn-glass" href="/links">Links page</a>
+    </div>
+  </div>
 </Layout>

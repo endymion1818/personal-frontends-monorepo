@@ -14,15 +14,13 @@ export async function getStaticPaths() {
       body: JSON.stringify({
         query: `
           {
-            listPages(limit: 200) {
+            listB5Pages(limit: 200) {
               data {
                 id
                 title
                 slug
                 description
                 body
-                publishDate
-                shareCard
               }
               error {
                 message
@@ -35,7 +33,7 @@ export async function getStaticPaths() {
   ).then (
     response => response.json()
   )
-  return data.data.listPages.data.map(page => {
+  return data.data.listB5Pages.data.map(page => {
     return {
       params: { slug: page.slug },
       props: { page },
@@ -45,6 +43,8 @@ export async function getStaticPaths() {
 const { page } = Astro.props;
 ---
 <Layout pageTitle={page.title} pageDescription={page.description} slug={page.slug}>
-    <h1 class="text-4xl">{page.title}</h1>
-    <RichTextRenderer data={page.body} />
+  <div class="container max-w-lg">  
+      <h1 class="text-4xl">{page.title}</h1>
+      <RichTextRenderer data={page.body} />
+  </div>
 </Layout>

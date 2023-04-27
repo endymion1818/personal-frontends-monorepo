@@ -37,17 +37,17 @@ const content = getTagsArrayFromPostList(data)
 
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" slug="tags">
-    <div class="my-5">
+    <div class="container my-5">
       <h1 class="text-4xl mb-2">All Topics:</h1>
       {content.map(tag => (
-        <a href={`#${tag.slug}`} class="badge badge-outline m-2 hover:badge-primary hover:text-white">{tag.title}</a>
+        <a href={`#${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary hover:text-white">{tag.title}</a>
       ))}
       <h2 class="text-4xl mt-6">All articles:</h2>
       {content.map((tag) => (
-          <article class="card bg-secondary">
+          <article class="card bg-secondary mb-6">
             <div class="card-body">
               <h2 id={tag.slug} class="card-title text-inherit">
-                <a href={`/tags/${tag.slug}/`}>All {tag.title} articles</a>
+                <a href={`/tags/${tag.slug}/`}>{tag.title}:</a>
               </h2>
               {tag.description && <p class="text-inherit">{tag.description}</p>}
               {tag.posts.length ? (

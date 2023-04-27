@@ -23,9 +23,9 @@ interface Props {
 const { post } = Astro.props
 
 ---
-<article>
+<a href={`/posts/${post.slug}/`} class="hover:tw-bg-zinc-400">
   {post.shareCard && (
-    <a href={`/posts/${post.slug}/`}><img src={post.shareCard} /></a>
+    <img src={post.shareCard} />
   )}
   <div class="py-5">
     <h2 class="card-title text-2xl text-inherit mb-2 tracking-wide">
@@ -45,4 +45,4 @@ const { post } = Astro.props
       </div>
     ) : null}
   </div>
-</article>
+</a>

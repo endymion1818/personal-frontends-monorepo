@@ -28,12 +28,12 @@ const isHomePage = currentPath === '';
   >
   <div class="container pt-6">
     <header
-      class="bg-slate-800 navbar rounded-lg shadow-lg bg-pattern-light relative"
+      class="bg-slate-800 lg:navbar rounded-lg shadow-lg bg-pattern-light relative justify-center flex-col lg:flex-row"
     >
       <div class="navbar-start mx-auto">
         <div class="bg-slate p-2">
           <a
-            class="header--logo block uppercase text-xl hover:text-underline"
+            class="header--logo block uppercase text-center lg:text-left lg:text-xl hover:text-underline"
             href='/'
           >
             <span class="font-display text-primary text-5xl drop-shadow-md"
@@ -42,12 +42,12 @@ const isHomePage = currentPath === '';
           </a>
           {
             subtitle && (
-              <p class="font-display text-sm mt-2 drop-shadow-sm">{subtitle}</p>
+              <p class="font-display text-sm mt-2 drop-shadow-sm text-center lg:text-left">{subtitle}</p>
             )
           }
         </div>
       </div>
-      <div class="navbar mx-auto flex-1 justify-end">
+      <div class="navbar mx-auto flex-1 justify-center lg:justify-end">
         {
           menuItems?.length ? (
             <ul class="header--navigation overflow-y-auto gap-2">

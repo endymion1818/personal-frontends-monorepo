@@ -37,13 +37,17 @@ const response = await fetch(
 const { data } = await response.json()
 ---
 <Layout pageTitle="home">
-  <div class="container">
+  <div class="container grid gap-4">
       {data?.listArticles?.data.length ? (
-        <div class="grid grid-cols-1 gap-4">
+        <div class="w-3/4">
           {data?.listArticles?.data.map((article: Article) => (
             <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
+            <hr class="border border-b-2 border-b-gray-300" />
           ))}
         </div>
       ) : null}
+      <div class="w-1/4">
+        sidebar
+      </div>
     </div>
 </Layout>

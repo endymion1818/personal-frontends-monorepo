@@ -1,14 +1,14 @@
 export default `{
-  listArticles(limit: 200, sort: publishDate_DESC) {
+  listArticles {
     data {
       id
       title
       slug
       description
+      firstPublishedDate
       categories {
-        title
+        category
         slug
-        description
       }
     }
   }

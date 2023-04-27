@@ -23,7 +23,7 @@ interface Props {
 const { post } = Astro.props
 
 ---
-<article class="bg-secondary">
+<article>
   {post.shareCard && (
     <a href={`/posts/${post.slug}/`}><img src={post.shareCard} /></a>
   )}

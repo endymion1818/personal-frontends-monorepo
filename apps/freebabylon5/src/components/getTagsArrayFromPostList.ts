@@ -1,4 +1,4 @@
-interface Tags {
+interface Category {
   title: string
   slug: string
   description: string
@@ -10,18 +10,18 @@ interface Tags {
 }
 
 const getTagsArrayFromPostsList = (data) => {
-  const tagsArrayFromPostsList = data.listArticles.data.reduce((prev, { tags, ...post }) => {
-    tags.forEach(tag => {
-      prev.set(tag.slug, {
-        title: tag.title,
-        slug: tag.slug,
-        posts: [...(prev.get(tag.slug)?.posts || []), post],
+  const tagsArrayFromPostsList = data.listArticles.data.reduce((prev, { categories, ...post }) => {
+    categories.forEach(category => {
+      prev.set(category.slug, {
+        title: category.category,
+        slug: category.slug,
+        posts: [...(prev.get(category.slug)?.posts || []), post],
       })
     });
     return prev;
   }, new Map());
 
-  const content:Tags[] = Array.from(tagsArrayFromPostsList.values())
+  const content:Category[] = Array.from(tagsArrayFromPostsList.values())
   return content
 }
 export default getTagsArrayFromPostsList

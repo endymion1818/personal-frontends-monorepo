@@ -13,17 +13,21 @@ const getData = async () => {
       },
       body: JSON.stringify({
         query: `
-          {
-            listArticles(limit: 200, sort: publishDate_DESC) {
-              data {
-                id
-                title
+        {
+          listArticles {
+            data {
+              id
+              title
+              slug
+              description
+              firstPublishedDate
+              categories {
+                category
                 slug
-                description
-                publishDate
               }
             }
           }
+        }
         `,
       }),
     }
@@ -51,7 +55,7 @@ export const get = () => rss({
     title: page.title,
     description: page.description,
     link: `${siteUrl}/posts/${page.slug}/`,
-    pubDate: page.publishDate,
+    pubDate: page.firstPublishedDate,
   })),
   // (optional) inject custom xml
   customData: `<language>${siteLanguage}</language>`,

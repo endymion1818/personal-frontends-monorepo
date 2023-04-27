@@ -13,17 +13,16 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listArticles(limit: 200, sort: publishDate_DESC) {
+          listArticles(sort: publishDate_DESC) {
             data {
               id
               title
               slug
               description
               body
-              publishDate
-              shareCard
-              tags {
-                title
+              firstPublishDate
+              categories {
+                category
                 slug
                 description
               }
@@ -38,11 +37,6 @@ const response = await fetch(
   }
 );
 const { data } = await response.json();
-
-if(data.listArticles.data.length >= 200) {
-  console.log('time to paginate!');
-  return false
-}
 ---
 <Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" slug="posts">
     <h1 class="text-4xl">Archive</h1>

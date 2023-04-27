@@ -15,7 +15,6 @@ const {menuItems, logo, title, subtitle, url } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname;
 // @ts-ignore
 const currentPath = pathname.slice(1).replaceAll("/","");
-console.log({ currentPath })
 ---
 <header class="bg-accent header">
   <div class="mx-auto">
@@ -39,7 +38,6 @@ console.log({ currentPath })
     {menuItems?.length ? (
       <ul class="header--navigation overflow-y-auto">
         {menuItems.map(item => {
-          console.log(item.link.replace("/", ""))
           return (
           <li class="text-white">
             <a class={

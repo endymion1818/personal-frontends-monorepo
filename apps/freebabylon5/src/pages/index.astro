@@ -22,7 +22,7 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listArticles {
+          listArticles(limit: 3) {
             data {
               id
               title

@@ -1,4 +1,4 @@
-export let title = '#Free Babylon 5';
+export let title = '#FreeBabylon5';
 export let subtitle = "Our last, best hope to get Babylon 5 back on the air";
 export let siteUrl = "https://freebabylon5.com"
 export let siteLanguage = 'en-US'
@@ -14,7 +14,7 @@ export let menuItems = [{
   link: '/links/',
 }, {
   title: 'Articles',
-  link: '/categories/',
+  link: '/tag/',
 }, {
   title: ' Watch Babylon 5',
   link: '/watch/',

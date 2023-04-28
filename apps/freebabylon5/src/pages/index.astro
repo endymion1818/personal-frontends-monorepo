@@ -45,13 +45,6 @@ const content = getTagsArrayFromPostList(data)
 const articles = data?.listArticles?.data.slice(0, 3);
 ---
 <Layout pageTitle="home">
-  <div class="container max-w-lg pb-6">
-    <div class="alert alert-info flex-col">
-      <h1 class="text-xl font-bold">Babylon 5 is a game-changing, ground breaking, emmy-award winning TV series.</h1>
-      <p class="w-full">But it is in danger of becoming lost and forgotten.</p>
-    <p>We are not going to let that happen. Please join us and help #FreeBabylon5</p>
-    </div>
-  </div>
   <div class="container px-6">
     <h1 class="text-3xl">Latest News:</h1>
   </div>
@@ -74,7 +67,7 @@ const articles = data?.listArticles?.data.slice(0, 3);
   <div class="relative my-6">
     <img src={FeatureImage} loading="lazy" alt="Delenn, Garibaldi, G'kar, Franklin and Sheridan overlooking the station" class="w-full relative" />
     <div class="container max-w-lg pb-6 absolute inset-0 flex">
-      <div class="alert alert-error flex-col m-auto bg-error/50">
+      <div class="alert alert-error flex-col m-auto bg-error/50 text-black">
         <h2 class="text-xl font-bold">Our Last, Best Hope.</h2>
           <p>The Babylon 5 writers, actors and community changed our lives. It changed TV forever.</p>
           <p class="w-full">This might be the last, best hope we have.</p>
@@ -94,11 +87,18 @@ const articles = data?.listArticles?.data.slice(0, 3);
   <div class="relative my-6">
     <img src={FeatureImage2} loading="lazy" alt="Babylon 5" class="w-full relative" />
     <div class="container max-w-lg pb-6 absolute inset-0 flex">
-      <div class="alert alert-info flex-col m-auto bg-primary/50 text-black">
+      <div class="alert alert-info flex-col m-auto bg-primary/50 text-white">
         <h2 class="text-xl font-bold">Jump point forming!</h2>
           <p>Visit the Jump Point and discover other places where Babylon 5 is being discussed.</p>
           <a class="btn btn-secondary btn-glass" href="/links">Links page</a>
       </div>
+    </div>
+  </div>
+  <div class="relative my-6">
+    <div class="container max-w-lg inset-0 flex flex-col">
+      <h2 class="text-center text-xl">Still not sure?</h2>
+      <p class="text-center mb-6">Maybe this will help.</p>
+      <div class="aspect-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/5NIupHRYQRE?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
     </div>
   </div>
 </Layout>

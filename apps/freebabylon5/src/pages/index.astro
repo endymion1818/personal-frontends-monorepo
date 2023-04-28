@@ -3,6 +3,7 @@ import Layout from '../components/Layout.astro'
 import { ArticleCard } from '@frontends/article-card';
 import FeatureImage from '../images/carousel-change.jpg';
 import FeatureImage2 from '../images/carousel-jumppoint.jpg';
+import getTagsArrayFromPostList from '../components/getTagsArrayFromPostList';
 export interface Article {
   id: string;
   title: string;
@@ -22,13 +23,17 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listArticles(limit: 3) {
+          listArticles {
             data {
               id
               title
               slug
               description
               firstPublishedDate
+              categories {
+                category
+                slug
+              }
             }
           }
         }`
@@ -36,6 +41,8 @@ const response = await fetch(
   }
 );
 const { data } = await response.json()
+const content = getTagsArrayFromPostList(data)
+const articles = data?.listArticles?.data.slice(0, 3);
 ---
 <Layout pageTitle="home">
   <div class="container max-w-lg pb-6">
@@ -46,37 +53,52 @@ const { data } = await response.json()
     </div>
   </div>
   <div class="container px-6">
-    <h1 class="text-xl">Latest News</h1>
+    <h1 class="text-3xl">Latest News:</h1>
   </div>
   <div class="container flex gap-4 px-6">
-    {data?.listArticles?.data.length ? (
+    {articles.length ? (
       <div class="w-3/4">
-        {data?.listArticles?.data.map((article: Article) => (
+        {articles.map((article: Article) => (
           <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
           <hr class="border border-b-2 border-b-gray-300" />
         ))}
       </div>
     ) : null}
     <div class="w-1/4">
-      sidebar
+      <h2>View all articles by topic:</h2>
+      {content.map(tag => (
+        <a href={`/tag/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
+      ))}
     </div>
   </div>
-  <img src={FeatureImage} loading="lazy" alt="Delenn, Garibaldi, G'kar, Franklin and Sheridan overlooking the station" class="w-full my-6" />
-  <div class="container max-w-lg pb-6">
-    <div class="alert alert-error flex-col">
-      <h2 class="text-xl font-bold">Our Last, Best Hope.</h2>
-        <p>The Babylon 5 writers, actors and community changed our lives. It changed TV forever.</p>
-        <p class="w-full">This might be the last, best hope we have.</p>
-        <a class="btn btn-secondary btn-glass" href="/about">About the campaign</a>
-
+  <div class="relative my-6">
+    <img src={FeatureImage} loading="lazy" alt="Delenn, Garibaldi, G'kar, Franklin and Sheridan overlooking the station" class="w-full relative" />
+    <div class="container max-w-lg pb-6 absolute inset-0 flex">
+      <div class="alert alert-error flex-col m-auto bg-error/50">
+        <h2 class="text-xl font-bold">Our Last, Best Hope.</h2>
+          <p>The Babylon 5 writers, actors and community changed our lives. It changed TV forever.</p>
+          <p class="w-full">This might be the last, best hope we have.</p>
+          <a class="btn btn-secondary btn-glass" href="/about">About the campaign</a>
+      </div>
     </div>
   </div>
-  <img src={FeatureImage2} loading="lazy" alt="Babylon 5" class="w-full mb-6" />
-  <div class="container max-w-lg pb-6">
-    <div class="alert alert-info flex-col">
-      <h2 class="text-xl font-bold">Jump point forming!</h2>
-        <p>Visit the Jump Point and discover other places where Babylon 5 is being discussed.</p>
-        <a class="btn btn-secondary btn-glass" href="/links">Links page</a>
+  <div class="relative my-6">
+    <div class="container max-w-lg inset-0 flex">
+      <div class="alert alert-info flex-col m-auto">
+        <h2>Blu-ray / HD Edition</h2>
+        <p>Its is very unlikely that a blu-ray or hi definition version of Babylon 5 could ever be created. This recent discussion hilights the problem:</p>
+        <p></p><a class="underline" href="/post/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</a></p>
+        <p><a class="underline" href="/post/official-remasters-published/">There is, however a remastered edition</a></p>
+      </div>
+  </div>
+  <div class="relative my-6">
+    <img src={FeatureImage2} loading="lazy" alt="Babylon 5" class="w-full relative" />
+    <div class="container max-w-lg pb-6 absolute inset-0 flex">
+      <div class="alert alert-info flex-col m-auto bg-primary/50 text-black">
+        <h2 class="text-xl font-bold">Jump point forming!</h2>
+          <p>Visit the Jump Point and discover other places where Babylon 5 is being discussed.</p>
+          <a class="btn btn-secondary btn-glass" href="/links">Links page</a>
+      </div>
     </div>
   </div>
 </Layout>

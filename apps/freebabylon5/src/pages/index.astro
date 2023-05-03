@@ -23,7 +23,7 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listArticles {
+          listArticles(limit:300) {
             data {
               id
               title
@@ -51,16 +51,16 @@ const articles = data?.listArticles?.data.slice(0, 3);
   <div class="container flex gap-4 px-6">
     {articles.length ? (
       <div class="w-3/4">
-        {articles.map((article: Article) => (
+        {articles.map((article: Article, index) => (
           <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
-          <hr class="border border-b-2 border-b-gray-300" />
+          {index !== 2 && (<hr class="border border-b-2 border-b-gray-300" />)}
         ))}
       </div>
     ) : null}
     <div class="w-1/4">
       <h2>View all articles by topic:</h2>
       {content.map(tag => (
-        <a href={`/tag/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
+        <a href={`/category/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
       ))}
     </div>
   </div>

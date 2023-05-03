@@ -1,5 +1,5 @@
 export default `{
-  listArticles {
+  listArticles(limit:300) {
     data {
       id
       title

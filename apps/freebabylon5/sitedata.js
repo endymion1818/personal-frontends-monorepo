@@ -16,7 +16,7 @@ export let menuItems = [{
   title: 'Articles',
   link: '/category/',
 }, {
-  title: ' Watch Babylon 5',
+  title: 'Watch',
   link: '/watch/',
 }]
 

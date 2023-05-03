@@ -34,7 +34,7 @@ export const footerMenuItems = [{
   }]
 }]
 
-export let acknowledgementText = `Babylon 5, characters, names, and all related indicia are trademarks of Warner Bros. Entertainment, Inc. ©1994-${new Date().getFullYear()} All Rights Reserved. This site is hosted on Netlify. We don't track you.`
+export let acknowledgementText = `Babylon 5, characters, names, and all related indicia are trademarks of Warner Bros. Entertainment, Inc. ©1994-${new Date().getFullYear()} All Rights Reserved. The CMS is Webiny hosted on AWS, frontend is Astro hosted on Netlify. We don't track you.`
 
 export let socialLinks = {
   linkedin: {

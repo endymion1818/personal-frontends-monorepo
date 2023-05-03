@@ -89,32 +89,28 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
       </div>
     </div>
   </div>
+  {(jmsVideo?.items?.length && b5FisrtTimeVideo?.items?.length && grey17Video?.items?.length) && ( 
   <div class="relative my-6">
     <div class="container text-center">
       <h2 class="text-3xl mb-2">Latest Videos and Podcasts</h2>
       <p class="mb-4">Videos from JMS' YouTube channel, as well as other videos from the community.</p>
     </div>
     <div class="container grid md:grid-cols-3 gap-4">
-      {jmsVideo?.items?.length && (
         <Embeds embed={{
           type: "youtube", 
           link: `https://www.youtube.com/embed/${jmsVideo.items[0].id.videoId}` }} 
         />
-      )}
-      {b5FisrtTimeVideo?.items?.length && (
         <Embeds embed={{
           type: "youtube", 
           link: `https://www.youtube.com/embed/${b5FisrtTimeVideo.items[0].id.videoId}` }}
         />
-      )}
-      {grey17Video?.items?.length && (
         <Embeds embed={{
           type: "youtube", 
           link: `https://www.youtube.com/embed/${grey17Video.items[0].id.videoId}` }} 
         />
-      )}
-    </div>
-  </div>
+        </div>
+        </div>
+  )}
   <div class="relative my-6">
     <div class="container max-w-lg inset-0 flex">
       <div class="alert alert-info flex-col m-auto">

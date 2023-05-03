@@ -3,7 +3,9 @@ import Layout from '../components/Layout.astro';
 import Image  from '../images/404-image.jpg';
 ---
 <Layout title="Page not found">
-	<img src={Image} class="w-full pb-6" alt="Voice of the Resistence Susan Ivonava announcing" />
-	<h1 class="text-4xl pb-4">Page not found</h1>
-	<p>Absolutely nothing happened in Sector 404 today. I repeat, absolutely nothing happened in sector 404.</p>
+	<div class="container">
+		<img src={Image} class="w-full pb-6" alt="Voice of the Resistence Susan Ivonava announcing" />
+		<h1 class="text-4xl pb-4">Page not found</h1>
+		<p>Absolutely nothing happened in Sector 404 today. I repeat, absolutely nothing happened in sector 404.</p>
+	</div>
 	</Layout>

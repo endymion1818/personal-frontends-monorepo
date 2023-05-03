@@ -62,16 +62,16 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
   <div class="container px-6">
     <h1 class="text-3xl">Latest News:</h1>
   </div>
-  <div class="container flex gap-4 px-6">
+  <div class="container flex flex-col sm:flex-row gap-4 px-6">
     {articles.length ? (
-      <div class="w-3/4">
+      <div class="sm:w-3/4">
         {articles.map((article: Article, index) => (
           <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
           {index !== 2 && (<hr class="border border-b-2 border-b-gray-300" />)}
         ))}
         </div>
         ) : null}
-    <div class="w-1/4">
+    <div class="sm:w-1/4">
       <h2 class="text-xl">View all articles by topic:</h2>
       {content.map(tag => (
         <a href={`/category/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
@@ -80,7 +80,7 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
   </div>
   <div class="relative my-6">
     <img src={FeatureImage} loading="lazy" alt="Delenn, Garibaldi, G'kar, Franklin and Sheridan overlooking the station" class="w-full relative" />
-    <div class="container max-w-lg pb-6 absolute inset-0 flex">
+    <div class="container max-w-lg pb-6 sm:absolute inset-0 flex">
       <div class="alert alert-error flex-col m-auto bg-error/50 text-black">
         <h2 class="text-xl font-bold">Our Last, Best Hope.</h2>
           <p>The Babylon 5 writers, actors and community changed our lives. It changed TV forever.</p>
@@ -122,7 +122,7 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
   </div>
   <div class="relative my-6">
     <img src={FeatureImage2} loading="lazy" alt="Babylon 5" class="w-full relative" />
-    <div class="container max-w-lg pb-6 absolute inset-0 flex">
+    <div class="container max-w-lg pb-6 sm:absolute inset-0 flex">
       <div class="alert alert-info flex-col m-auto bg-primary/50 text-white">
         <h2 class="text-xl font-bold">Jump point forming!</h2>
           <p>Visit the Jump Point and discover other places where Babylon 5 is being discussed.</p>
@@ -134,7 +134,7 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
     <div class="container max-w-lg inset-0 flex flex-col">
       <h2 class="text-center text-xl">Still not sure?</h2>
       <p class="text-center mb-6">Maybe this will help.</p>
-      <div class="aspect-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/5NIupHRYQRE?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <iframe class="aspect-video" src="https://www.youtube.com/embed/5NIupHRYQRE?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </Layout>

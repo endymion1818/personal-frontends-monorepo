@@ -1,0 +1,61 @@
+---
+import { RichTextRenderer } from "@frontends/rich-text-renderer"
+import { Embeds } from "@frontends/embeds"
+import Layout from '../../components/Layout.astro'
+import { title } from "../../../sitedata";
+
+export async function getStaticPaths() {
+  const data = await fetch(
+    process.env.WEBINY_READ_URL,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.WEBINY_ACCESS_TOKEN}`,
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+        query: `
+          {
+            listArticles(limit: 200) {
+              data {
+                id
+                title
+                slug
+                description
+                body
+                firstPublishedDate
+                categories {
+                  category
+                  slug
+                }
+              }
+              error {
+                message
+              }
+            }
+          }
+        `,
+      }),
+    }
+  ).then (
+    response => response.json()
+  )
+
+  return data.data.listArticles.data.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+}
+const { post } = Astro.props;
+---
+<Layout pageTitle={post.title} pageDescription={post.description} slug={`posts/${post.slug}`} canonical={post.canonicalLink}>
+    <div class="container max-w-lg">
+      <h1 class="text-4xl mb-4">{post.title}</h1>
+        {post.embed?.link && (
+          <Embeds embed={post.embed} />
+      )}
+        <RichTextRenderer data={post.body} />
+    </div>
+</Layout>

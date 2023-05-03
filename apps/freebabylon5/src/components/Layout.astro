@@ -1,8 +1,4 @@
 ---
-import { SEO } from 'astro-seo'
-import Header from './Header.astro'
-import Footer from './Footer.astro'
-
 import defaultShareCard from '../images/default-share-card.png'
 interface Props {
   pageTitle: string
@@ -12,6 +8,10 @@ interface Props {
   slug?: string
 }
 
+import { SEO } from 'astro-seo'
+import Header from '../components/Header.astro'
+import { Footer } from '@frontends/footer'
+
 import {
   title,
   subtitle,
@@ -20,7 +20,7 @@ import {
   acknowledgementText,
   socialLinks } from '../../sitedata';
 
-const { pageTitle, pageDescription, shareCard, canonical, slug } = Astro.props
+const { pageTitle, pageDescription, shareCard, slug } = Astro.props
 
 const seoTitle = pageTitle ? `${pageTitle} - ${title}`: title
 
@@ -51,28 +51,23 @@ const seoProps = {
   },
 }
 ---
-<html lang="en" data-theme="mytheme">
+<html lang="en-US" data-theme="mytheme">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="/styles/global.css">
-  <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />
+  <link rel="stylesheet" href="/styles/global.css" type="text/css">
+  <link rel="preload" href="/fonts/serpentine.woff2" as="font" />
   <SEO
     {...seoProps}
-    canonical={canonical ? canonical : slug ? `/${slug}/` : ''}
+    canonical={`/${slug}/`}
    />
 </head>
-<body class="bg-secondary text-black leading-relaxed">
+<body class="bg-secondary text-white leading-relaxed">
     <Header title={title} menuItems={menuItems} subtitle={subtitle} url={`/${slug}/`} />
-    <main class="max-w-contain mx-auto py-10" id="main">
-      <slot />
+    <main class="relative bg-pattern py-6" id="main">
+        <slot />
     </main>
-    <div class="prefooter bg-primary text-white py-11">
-      <div class="max-w-contain mx-auto">
-        <blockquote><h2 class="text-4xl">“Wisest are they who know they do not know.”</h2><attr>— Jostein Gaarder</attr></blockquote>
-      </div>
-    </div>
-    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={`/${slug}/`}/>
+    <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={`/${slug}/`} withPadding={true}/>
 </body>
 </html>

@@ -23,9 +23,9 @@ interface Props {
 const { post } = Astro.props
 
 ---
-<article class="bg-secondary">
+<a href={`/posts/${post.slug}/`} class="hover:tw-bg-zinc-400">
   {post.shareCard && (
-    <a href={`/posts/${post.slug}/`}><img src={post.shareCard} /></a>
+    <img src={post.shareCard} />
   )}
   <div class="py-5">
     <h2 class="card-title text-2xl text-inherit mb-2 tracking-wide">
@@ -35,7 +35,7 @@ const { post } = Astro.props
     {post.embed?.link && (
       <Embeds embed={post.embed}/>
     )}
-    <p class="my-2">Published on <FormatDate datetime={post.publishDate}/></p>
+    {post.publishDate && <p class="my-2">Published on <FormatDate datetime={post.publishDate}/></p>}
     {post?.tags?.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
@@ -45,4 +45,4 @@ const { post } = Astro.props
       </div>
     ) : null}
   </div>
-</article>
+</a>

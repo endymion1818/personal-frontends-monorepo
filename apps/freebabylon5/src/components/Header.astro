@@ -1,0 +1,91 @@
+---
+import FeatureImage from '../images/carousel-1.jpg';
+interface Props {
+  menuItems: Array<{
+    title: string;
+    link: string;
+  }>;
+  logo?: string;
+  title: string;
+  subtitle: string;
+  url: string;
+}
+
+const { menuItems, title, subtitle, url } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+// @ts-ignore
+const currentPath = pathname.slice(1).replaceAll('/', '');
+const isHomePage = currentPath === '';
+---
+
+<div class:list={new Set(["relative bg-pattern", isHomePage && "h-[80vh] flex flex-col justify-between"])}>
+  {isHomePage && (<img src={FeatureImage} alt="logo" class="absolute w-full" />)}
+  <a
+    href="#main"
+    class="hidden mt-4 -top-20 focus-visible:top-0 skip-links btn btn-ghost w-40 border-secondary text-secondary p-4 normal-case"
+    >Skip links</a
+  >
+  <div class="container pt-6 px-6">
+    <header
+      class="bg-slate-800 lg:navbar rounded-lg bg-pattern-light relative justify-center flex-col lg:flex-row"
+    >
+      <div class="navbar-start mx-auto">
+        <div class="bg-slate p-2">
+          <a
+            class="header--logo block text-center lg:text-left lg:text-xl hover:text-underline"
+            href='/'
+          >
+            <span class="font-display text-white text-2xl lg:text-5xl text-shadow shadow-black"
+              >{title}</span
+            >
+          </a>
+          {
+            subtitle && (
+              <p class="font-display text-sm mt-2 text-center text-primary lg:text-left">{subtitle}</p>
+            )
+          }
+        </div>
+      </div>
+      <div class="navbar mx-auto flex-1 justify-center lg:justify-end">
+        {
+          menuItems?.length ? (
+            <ul class="header--navigation overflow-y-auto gap-2">
+              {menuItems.map((item, index) => {
+                const isLastItem =
+                  menuItems.length - 1 === index && `btn-primary`;
+                const isCurrentPage =
+                  item.link.replaceAll('/', '') !== currentPath && `btn-ghost`;
+                return (
+                  <li class="text-white">
+                    <a
+                      class:list={
+                        new Set([
+                          `btn`,
+                          isCurrentPage,
+                          isLastItem,
+                          `normal-case focus-visible:ring focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`,
+                        ])
+                      }
+                      href={item.link}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null
+        }
+      </div>
+    </header>
+  </div>
+  {isHomePage && (<div class="container pb-6 max-w-lg relative">
+    <div class="alert alert-info flex-col">
+      <h1 class="text-xl font-bold">Why #FreeBabylon5?</h1>
+      <p class="w-full">Babylon 5 (or B5 for short) is a game-changing, ground breaking, emmy-award winning TV series.</p>
+      <p class="w-full">But it is in danger of becoming lost and forgotten.</p>
+    <p class="w-full">We are not going to let that happen. Please join us and help #FreeBabylon5</p>
+    </div>
+  </div>)}
+</div>

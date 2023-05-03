@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "freebabylon5",
+  "projectType": "application",
+  "sourceRoot": "apps/freebabylon5/src",
+  "targets": {
+    "build": {
+      "outputs": ["dist/apps/freebabylon5"],
+      "executor": "@nxtensions/astro:build",
+      "options": {}
+    },
+    "dev": {
+      "executor": "@nxtensions/astro:dev",
+      "options": {}
+    },
+    "preview": {
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "executor": "@nxtensions/astro:preview",
+      "options": {}
+    },
+    "check": {
+      "executor": "@nxtensions/astro:check"
+    },
+    "sync": {
+      "executor": "@nxtensions/astro:sync"
+    }
+  },
+  "tags": []
+}

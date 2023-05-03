@@ -53,7 +53,10 @@ const getLatestYoutubeVideo = async (channelId) => {
   )
   return await response.json();
 }
-const videos = await getLatestYoutubeVideo('UCwPuW7zLqhhW5HdTmblqiww')
+const jmsVideo = await getLatestYoutubeVideo('UCwPuW7zLqhhW5HdTmblqiww')
+const b5FisrtTimeVideo = await getLatestYoutubeVideo('UCQOZrHiUACfgItjzWIwWZ5Q')
+const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
+
 ---
 <Layout pageTitle="home">
   <div class="container px-6">
@@ -73,8 +76,6 @@ const videos = await getLatestYoutubeVideo('UCwPuW7zLqhhW5HdTmblqiww')
       {content.map(tag => (
         <a href={`/category/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
         ))}
-      <h2 class="text-xl">Latest Video from JMS on YouTube:</h2>
-      <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${videos.items[0].id.videoId}` }} />
     </div>
   </div>
   <div class="relative my-6">
@@ -89,9 +90,20 @@ const videos = await getLatestYoutubeVideo('UCwPuW7zLqhhW5HdTmblqiww')
     </div>
   </div>
   <div class="relative my-6">
+    <div class="container text-center">
+      <h2 class="text-3xl mb-2">Latest Videos and Podcasts</h2>
+      <p class="mb-4">Videos from JMS' YouTube channel, as well as other videos from the community.</p>
+    </div>
+    <div class="container grid md:grid-cols-3 gap-4">
+      <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${jmsVideo.items[0].id.videoId}` }} />
+      <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${b5FisrtTimeVideo.items[0].id.videoId}` }} />
+      <Embeds embed={{type: "youtube", link: `https://www.youtube.com/embed/${jmsVideo.items[0].id.videoId}` }} />
+    </div>
+  </div>
+  <div class="relative my-6">
     <div class="container max-w-lg inset-0 flex">
       <div class="alert alert-info flex-col m-auto">
-        <h2>Blu-ray / HD Edition</h2>
+        <h2 class="text-xl">Blu-ray / HD Edition</h2>
         <p>Its is very unlikely that a blu-ray or hi definition version of Babylon 5 could ever be created. This recent discussion hilights the problem:</p>
         <p></p><a class="underline" href="/post/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</a></p>
         <p><a class="underline" href="/post/official-remasters-published/">There is, however a remastered edition</a></p>

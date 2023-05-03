@@ -62,16 +62,16 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
   <div class="container px-6">
     <h1 class="text-3xl">Latest News:</h1>
   </div>
-  <div class="container flex gap-4 px-6">
+  <div class="container flex flex-col sm:flex-row gap-4 px-6">
     {articles.length ? (
-      <div class="w-3/4">
+      <div class="sm:w-3/4">
         {articles.map((article: Article, index) => (
           <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} />
           {index !== 2 && (<hr class="border border-b-2 border-b-gray-300" />)}
         ))}
         </div>
         ) : null}
-    <div class="w-1/4">
+    <div class="sm:w-1/4">
       <h2 class="text-xl">View all articles by topic:</h2>
       {content.map(tag => (
         <a href={`/category/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>

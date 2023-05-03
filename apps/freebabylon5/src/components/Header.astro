@@ -19,7 +19,7 @@ const currentPath = pathname.slice(1).replaceAll('/', '');
 const isHomePage = currentPath === '';
 ---
 
-<div class:list={new Set(["relative bg-pattern", isHomePage && "h-[80vh] flex flex-col justify-between"])}>
+<div class:list={new Set(["relative bg-pattern", isHomePage && "lg:h-[80vh] flex flex-col justify-between"])}>
   {isHomePage && (<img src={FeatureImage} alt="logo" class="absolute w-full" />)}
   <a
     href="#main"

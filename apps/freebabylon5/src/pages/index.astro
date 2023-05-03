@@ -41,8 +41,8 @@ const response = await fetch(
     }),
   }
 );
-const { data } = await response.json()
-const content = getTagsArrayFromPostList(data)
+const { data } = await response.json();
+const content = getTagsArrayFromPostList(data);
 const articles = data?.listArticles?.data.slice(0, 3);
 
 const count = data?.listArticles?.data.length

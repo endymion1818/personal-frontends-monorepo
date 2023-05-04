@@ -30,19 +30,19 @@ const isHomePage = currentPath === '';
     <header
       class="bg-slate-800 lg:navbar rounded-lg bg-pattern-light relative justify-center flex-col lg:flex-row"
     >
-      <div class="navbar-start mx-auto">
-        <div class="bg-slate p-2">
+      <div class="navbar-start w-full md:mx-auto">
+        <div class="bg-slate p-2 w-full">
           <a
             class="header--logo block text-center lg:text-left lg:text-xl hover:text-underline"
             href='/'
           >
-            <span class="font-display text-white text-2xl lg:text-5xl text-shadow shadow-black"
+            <span class="font-display text-white text-3xl lg:text-5xl text-shadow shadow-black"
               >{title}</span
             >
           </a>
           {
             subtitle && (
-              <p class="font-display text-sm mt-2 text-center text-primary lg:text-left">{subtitle}</p>
+              <p class="font-display text-lg mt-2 text-center text-primary lg:text-left">{subtitle}</p>
             )
           }
         </div>

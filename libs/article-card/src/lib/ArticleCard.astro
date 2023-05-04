@@ -13,6 +13,7 @@ interface Props {
       link: string
       type: 'spotify' | 'youtube'
     }
+    prefix?: string
     tags?: Array<{
       slug: string
       title: string
@@ -20,16 +21,16 @@ interface Props {
   }
 }
 
-const { post } = Astro.props
+const { post, postPrefix = 'posts', categoryPrefix = "tag" } = Astro.props
 
 ---
-<a href={`/posts/${post.slug}/`} class="hover:tw-bg-zinc-400">
+<a href={`/${postPrefix}/${post.slug}/`} class="hover:tw-bg-zinc-400">
   {post.shareCard && (
     <img src={post.shareCard} />
   )}
   <div class="py-5">
     <h2 class="card-title text-2xl text-inherit mb-2 tracking-wide">
-      <a class="hover:underline" href={`/posts/${post.slug}/`}>{post.title}</a>
+      <a class="hover:underline" href={`/${postPrefix}/${post.slug}/`}>{post.title}</a>
     </h2>
     <p class="text-inherit text-lg">{post.description}</p>
     {post.embed?.link && (
@@ -40,7 +41,7 @@ const { post } = Astro.props
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
         {post.tags.map(tag => (
-          <a href={`/tags/${tag.slug}/`} class="badge badge-outline hover:badge-primary hover:text-white">{tag.title}</a>
+          <a href={`/${categoryPrefix}/${tag.slug}/`} class="badge badge-outline hover:badge-primary hover:text-white">{tag.title}</a>
         ))}
       </div>
     ) : null}

@@ -13,14 +13,14 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
         {
-          listArticles(sort: publishDate_DESC) {
+          listArticles(sort: firstPublishedDate_DESC) {
             data {
               id
               title
               slug
               description
               body
-              firstPublishDate
+              firstPublishedDate
               categories {
                 category
                 slug
@@ -43,7 +43,7 @@ const { data } = await response.json();
     {data?.listArticles?.data.length ? (
         <div class="grid grid-cols-1 gap-4 py-4">
           {data?.listArticles?.data.map(post => (
-            <ArticleCard post={post}/>
+            <ArticleCard post={post} postPrefix="post" categoryPrefix="category" />
           ))}
         </div>
       ) : null}

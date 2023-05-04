@@ -1,5 +1,5 @@
 export default `{
-  listArticles(limit:300) {
+  listArticles(limit:300, sort: firstPublishedDate_DESC) {
     data {
       id
       title

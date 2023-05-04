@@ -63,9 +63,9 @@ const seoProps = {
     canonical={`/${slug}/`}
    />
 </head>
-<body class="bg-secondary text-white leading-relaxed">
+<body class="bg-secondary text-white leading-relaxed min-h-screen flex flex-col">
     <Header title={title} menuItems={menuItems} subtitle={subtitle} url={`/${slug}/`} />
-    <main class="relative bg-pattern py-6" id="main">
+    <main class="relative bg-pattern py-6 flex-grow" id="main">
         <slot />
     </main>
     <Footer title={title} footerMenuItems={footerMenuItems} acknowledgementText={acknowledgementText} socialLinks={ socialLinks } url={`/${slug}/`} withPadding={true}/>

@@ -13,16 +13,16 @@ interface Props {
       link: string
       type: 'spotify' | 'youtube'
     }
-    prefix?: string
-    tags?: Array<{
-      slug: string
-      title: string
-    }>
   }
+  postPrefix?: string
+  categoryPrefix?: string
+  tags?: Array<{
+    slug: string
+    title: string
+  }>
 }
 
-const { post, postPrefix = 'posts', categoryPrefix = "tag" } = Astro.props
-
+const { post, tags, postPrefix = 'posts', categoryPrefix = "tag" } = Astro.props
 ---
 <a href={`/${postPrefix}/${post.slug}/`} class="hover:tw-bg-zinc-400">
   {post.shareCard && (
@@ -37,10 +37,10 @@ const { post, postPrefix = 'posts', categoryPrefix = "tag" } = Astro.props
       <Embeds embed={post.embed}/>
     )}
     {post.publishDate && <p class="my-2">Published on <FormatDate datetime={post.publishDate}/></p>}
-    {post?.tags?.length ? (
+    {tags?.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
-        {post.tags.map(tag => (
+        {tags?.map(tag => (
           <a href={`/${categoryPrefix}/${tag.slug}/`} class="badge badge-outline hover:badge-primary hover:text-white">{tag.title}</a>
         ))}
       </div>

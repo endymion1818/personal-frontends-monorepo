@@ -14,7 +14,7 @@ export let menuItems = [{
   link: '/links/',
 }, {
   title: 'Articles',
-  link: '/category/',
+  link: '/tag/',
 }, {
   title: 'Watch',
   link: '/watch/',

@@ -66,7 +66,7 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
     {articles.length ? (
       <div class="sm:w-3/4">
         {articles.map((article: Article, index) => (
-          <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} postPrefix="post" categoryPrefix="category" />
+          <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} postPrefix="post" categoryPrefix="tag" />
           {index !== 2 && (<hr class="border border-b-2 border-b-gray-300" />)}
         ))}
         </div>
@@ -74,7 +74,7 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
     <div class="sm:w-1/4">
       <h2 class="text-xl">View all articles by topic:</h2>
       {content.map(tag => (
-        <a href={`/category/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
+        <a href={`/tag/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.title}</span></a>
         ))}
     </div>
   </div>

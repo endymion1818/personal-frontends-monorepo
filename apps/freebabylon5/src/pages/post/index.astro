@@ -43,7 +43,7 @@ const { data } = await response.json();
     {data?.listArticles?.data.length ? (
         <div class="grid grid-cols-1 gap-4 py-4">
           {data?.listArticles?.data.map(post => (
-            <ArticleCard post={post} postPrefix="post" categoryPrefix="category" />
+            <ArticleCard post={post} postPrefix="post" categoryPrefix="tag" />
           ))}
         </div>
       ) : null}

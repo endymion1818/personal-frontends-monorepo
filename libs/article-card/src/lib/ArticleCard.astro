@@ -13,34 +13,35 @@ interface Props {
       link: string
       type: 'spotify' | 'youtube'
     }
-    tags?: Array<{
-      slug: string
-      title: string
-    }>
   }
+  postPrefix?: string
+  categoryPrefix?: string
+  tags?: Array<{
+    slug: string
+    title: string
+  }>
 }
 
-const { post } = Astro.props
-
+const { post, tags, postPrefix = 'posts', categoryPrefix = "tag" } = Astro.props
 ---
-<a href={`/posts/${post.slug}/`} class="hover:tw-bg-zinc-400">
+<a href={`/${postPrefix}/${post.slug}/`} class="hover:tw-bg-zinc-400">
   {post.shareCard && (
     <img src={post.shareCard} />
   )}
   <div class="py-5">
     <h2 class="card-title text-2xl text-inherit mb-2 tracking-wide">
-      <a class="hover:underline" href={`/posts/${post.slug}/`}>{post.title}</a>
+      <a class="hover:underline" href={`/${postPrefix}/${post.slug}/`}>{post.title}</a>
     </h2>
     <p class="text-inherit text-lg">{post.description}</p>
     {post.embed?.link && (
       <Embeds embed={post.embed}/>
     )}
     {post.publishDate && <p class="my-2">Published on <FormatDate datetime={post.publishDate}/></p>}
-    {post?.tags?.length ? (
+    {tags?.length ? (
       <div class="card-actions mt-5 justify-end items-center">
         <span>This article is about:</span>
-        {post.tags.map(tag => (
-          <a href={`/tags/${tag.slug}/`} class="badge badge-outline hover:badge-primary hover:text-white">{tag.title}</a>
+        {tags?.map(tag => (
+          <a href={`/${categoryPrefix}/${tag.slug}/`} class="badge badge-outline hover:badge-primary hover:text-white">{tag.title}</a>
         ))}
       </div>
     ) : null}

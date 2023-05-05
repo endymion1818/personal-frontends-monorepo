@@ -50,12 +50,16 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 ---
-<Layout pageTitle={post.title} pageDescription={post.description} slug={`posts/${post.slug}`} canonical={post.canonicalLink}>
+<Layout pageTitle={post.title} pageDescription={post.description} slug={`post/${post.slug}`} canonical={post.canonicalLink}>
     <div class="container max-w-lg">
       <h1 class="text-4xl mb-4">{post.title}</h1>
         {post.embed?.link && (
           <Embeds embed={post.embed} />
       )}
         <RichTextRenderer data={post.body} />
+        <h2>More articles about: </h2>
+        {post.categories.map(tag => (
+          <a href={`/tag/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.category}</span></a>
+        ))}
     </div>
 </Layout>

@@ -53,7 +53,7 @@ const content = getTagsArrayFromPostList(data)
                 {tag.posts.length ? (
                   <ul class="list-disc">
                     {tag.posts.map(post => (
-                      <li class="ml-4"><a class="hover:underline px-1 inline-block" href={`/posts/${post.slug}/`}>{post.title}</a></li>
+                      <li class="ml-4"><a class="hover:underline px-1 inline-block" href={`/post/${post.slug}/`}>{post.title}</a></li>
                     ))}
                   </ul>
                 ) : null}

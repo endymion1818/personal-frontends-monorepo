@@ -31,22 +31,16 @@ export const footerMenuItems = [{
   }, {
     title: "Contact us",
     link: "mailto:freebabylon5@aol.com"
+  }, {
+    title: "Facebook group",
+    link: "https://www.facebook.com/groups/freebabylon5/"
+  }, {
+    title: "#FreeBabylon5 Twitter hashtag",
+    link: "https://twitter.com/search?q=%23FreeBabylon5&f=live"
+  }, {
+    title: "FreeBabylon5.com RSS feed",
+    link: "https://freebabylon5.com/rss.xml"
   }]
 }]
 
 export let acknowledgementText = `Babylon 5, characters, names, and all related indicia are trademarks of Warner Bros. Entertainment, Inc. ©1994-${new Date().getFullYear()} All Rights Reserved. The CMS is Webiny hosted on AWS, frontend is Astro hosted on Netlify. We don't track you.`
-
-export let socialLinks = {
-  linkedin: {
-    title: "Facebook",
-    link: "https://www.facebook.com/groups/freebabylon5/"
-  },
-  github: {
-    title: "Edit this site on GitHub",
-    link: "https://github.com/endymion1818/freebabylon5"
-  },
-  rss: {
-    title: "RSS Feed",
-    link: "https://freebabylon5.com/rss.xml"
-  }
-}

@@ -48,6 +48,11 @@ const footerClass = withPadding ? 'px-6' : '';
     <div class="footer items-center bg-grey-900 text-neutral-content">
       {socialLinks ? (
         <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+          {socialLinks.facebook && (
+            <a href={socialLinks.facebook.link} title={socialLinks.facebook.title}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="fill-current hover:fill-white h-24 w-24" xml:space="preserve" width="36" height="36" baseProfile="tiny" version="1.2"><path fill="#3B5998" d="M0 0h36v36H0z"/><path fill="#FFF" d="m30.895 16.535-.553 5.23h-4.181v15.176h-6.28V21.766H16.75v-5.23h3.131v-3.149c0-4.254 1.768-6.796 6.796-6.796h4.181v5.23h-2.615c-1.952 0-2.081.736-2.081 2.1v2.615h4.733z"/></svg>
+            </a>
+          )}
           {socialLinks.linkedin && (
             <a href={socialLinks.linkedin.link} title={socialLinks.linkedin.title}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

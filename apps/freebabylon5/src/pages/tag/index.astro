@@ -36,7 +36,7 @@ const { data } = await response.json()
 const content = getTagsArrayFromPostList(data)
 
 ---
-<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" slug="tags">
+<Layout pageTitle="archive" pageDescription="Archive of all articles published on this blog" slug="tag">
     <div class="container px-6 my-5">
       <h1 class="text-4xl mb-2">All Topics:</h1>
         {content.map(tag => (
@@ -47,7 +47,7 @@ const content = getTagsArrayFromPostList(data)
             <article class="card bg-secondary mb-6">
               <div class="card-body">
                 <h2 id={tag.slug} class="card-title text-inherit">
-                  <a href={`/category/${tag.slug}/`}>{tag.title}:</a>
+                  <a href={`/tag/${tag.slug}/`}>{tag.title}:</a>
                 </h2>
                 {tag.description && <p class="text-inherit">{tag.description}</p>}
                 {tag.posts.length ? (

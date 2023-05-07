@@ -60,7 +60,7 @@ const seoProps = {
   <link rel="preload" href="/fonts/Lovechild-Regular.woff2" as="font" />
   <SEO
     {...seoProps}
-    canonical={canonical ?? `https://deliciousreverie.co.uk/${slug && slug !== 'index' ? slug : ''}`}
+    canonical={canonical ?? `https://deliciousreverie.co.uk/${slug && slug !== 'index' ? `${slug}/` : ''}`}
    />
 </head>
 <body class="bg-secondary text-black leading-relaxed">

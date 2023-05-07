@@ -60,7 +60,7 @@ const seoProps = {
   <link rel="preload" href="/fonts/serpentine.woff2" as="font" />
   <SEO
     {...seoProps}
-    canonical={`/${slug}/`}
+    canonical={slug === 'index' ? `https://freebabylon5.com` : `https://freebabylon5.com/${slug}/`}
    />
 </head>
 <body class="bg-secondary text-white leading-relaxed min-h-screen flex flex-col">

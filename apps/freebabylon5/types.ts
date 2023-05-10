@@ -3,6 +3,7 @@ export interface Article {
   title: string;
   slug: string;
   description: string;
+  publishedDate: string;
   firstPublishedDate: string;
   categories: Category[] 
 }

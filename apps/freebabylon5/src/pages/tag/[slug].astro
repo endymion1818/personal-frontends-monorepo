@@ -2,10 +2,11 @@
 import Layout from '../../components/Layout.astro'
 import getTagsArrayFromPostList from '../../components/getTagsArrayFromPostList'
 import postsQuery from '../../components/postsQuery';
+import type { Article } from '../index.astro';
 
 export async function getStaticPaths() {
   const { data } = await fetch(
-    process.env.WEBINY_READ_URL,
+    process.env.WEBINY_READ_URL!,
     {
       method: 'POST',
       headers: {
@@ -35,7 +36,7 @@ const { tag } = Astro.props;
     <div class="container px-6 max-w-lg">
       <h1 class="text-4xl">Articles about {tag.title}:</h1>
     <ul class="list-disc pl-4">
-      {tag.posts.map(post => (
+      {tag.posts.map((post: Article) => (
         <li><a class="hover:underline p-1 inline-block" href={`/post/${post.slug}/`}>{post.title}</a></li>
       ))}
     </ul>

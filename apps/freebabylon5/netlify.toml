@@ -4,4 +4,5 @@
 [headers.values]
     Access-Control-Allow-Origin = "*"
 [[plugins]]
-package = "./deploy-tools/skip-build"
+ package = "netlify-plugin-nx-skip-build"
+

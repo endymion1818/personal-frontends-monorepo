@@ -1,9 +1,10 @@
 ---
 import { ArticleCard } from '@frontends/article-card'
 import Layout from '../../components/Layout.astro'
+import type { Article } from '../.././../types';
 
 const response = await fetch(
-    process.env.WEBINY_READ_URL,
+    process.env.WEBINY_READ_URL!,
   {
     method: 'POST',
     headers: {
@@ -20,6 +21,7 @@ const response = await fetch(
               slug
               description
               body
+              publishedDate
               firstPublishedDate
               categories {
                 category
@@ -42,7 +44,7 @@ const { data } = await response.json();
     <h1 class="text-4xl">Archive</h1>
     {data?.listArticles?.data.length ? (
         <div class="grid grid-cols-1 gap-4 py-4">
-          {data?.listArticles?.data.map(post => (
+          {data?.listArticles?.data.map((post:Article) => (
             <ArticleCard post={post} postPrefix="post" categoryPrefix="tag" />
           ))}
         </div>

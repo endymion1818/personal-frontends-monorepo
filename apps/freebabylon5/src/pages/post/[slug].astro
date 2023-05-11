@@ -2,11 +2,11 @@
 import { RichTextRenderer } from "@frontends/rich-text-renderer"
 import { Embeds } from "@frontends/embeds"
 import Layout from '../../components/Layout.astro'
-import { title } from "../../../sitedata";
+import type { Article } from "../../../types";
 
 export async function getStaticPaths() {
   const data = await fetch(
-    process.env.WEBINY_READ_URL,
+    process.env.WEBINY_READ_URL!,
     {
       method: 'POST',
       headers: {
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
     response => response.json()
   )
 
-  return data.data.listArticles.data.map((post) => {
+  return data.data.listArticles.data.map((post:Article) => {
     return {
       params: { slug: post.slug },
       props: { post },
@@ -58,7 +58,7 @@ const { post } = Astro.props;
       )}
         <RichTextRenderer data={post.body} />
         <h2>More articles about: </h2>
-        {post.categories.map(tag => (
+        {post.categories.map((tag:Article) => (
           <a href={`/tag/${tag.slug}`} class="badge badge-outline m-2 mb-4 hover:badge-primary"><span class="text-white hover:text-black">{tag.category}</span></a>
         ))}
     </div>

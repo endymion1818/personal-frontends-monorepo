@@ -19,7 +19,7 @@ interface Props {
   }
 
 const response = await fetch(
-    process.env.WEBINY_READ_URL,
+    process.env.WEBINY_READ_URL!,
   {
     method: 'POST',
     headers: {

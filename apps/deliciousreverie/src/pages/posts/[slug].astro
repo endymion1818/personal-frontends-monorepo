@@ -59,7 +59,9 @@ const { post } = Astro.props;
 ---
 <Layout pageTitle={post.title} pageDescription={post.description} slug={`posts/${post.slug}`} canonical={post.canonicalLink}>
     <h1 class="text-4xl mb-4">{post.title}</h1>
-    <span>Published on <FormatDate datetime={post.publishDate} /></span>
+    <span>Published on <FormatDate datetime={post.publishDate} /> 
+      {post.canonicalLink && 
+      <span>originally at <a class="underline hover:text-primary" href={post.canonicalLink}>{post.canonicalLink}</a></span>}</span>
     {post.embed?.link && (
       <Embeds embed={post.embed} />
   )}

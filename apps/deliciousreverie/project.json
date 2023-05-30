@@ -1,4 +1,5 @@
 {
+  "name": "deliciousreverie",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/deliciousreverie/src",
@@ -7,9 +8,7 @@
       "outputs": ["dist/apps/deliciousreverie"],
       "executor": "@nxtensions/astro:build",
       "options": {},
-      "assets": [
-        "netlify.toml"
-      ]
+      "assets": ["netlify.toml"]
     },
     "dev": {
       "executor": "@nxtensions/astro:dev",

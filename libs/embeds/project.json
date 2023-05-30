@@ -1,4 +1,5 @@
 {
+  "name": "embeds",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/embeds",
   "projectType": "library",

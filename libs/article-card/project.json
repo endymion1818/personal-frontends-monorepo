@@ -1,4 +1,5 @@
 {
+  "name": "article-card",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/article-card",
   "projectType": "library",

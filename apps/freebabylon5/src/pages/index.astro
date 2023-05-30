@@ -58,8 +58,10 @@ const grey17Video = await getLatestYoutubeVideo('UC4gCaXwOHhVy24Zt8UCOxeA')
     {articles.length ? (
       <div class="sm:w-3/4">
         {articles.map((article: Article, index: number) => (
-          <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} postPrefix="post" categoryPrefix="tag" />
-          {index !== 2 && (<hr class="border border-b-2 border-b-gray-300" />)}
+          <>
+            <ArticleCard post={{ publishDate: article.firstPublishedDate, ...article }} postPrefix="post" categoryPrefix="tag" />
+            {index !== 2 && (<hr class="border border-b-2 border-b-gray-300" />)}
+          </>
         ))}
         </div>
         ) : null}

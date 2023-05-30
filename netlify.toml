@@ -1,2 +1,2 @@
-[[plugins]]
-package = "./tools/skip-build"
+# [[plugins]]
+# package = "./tools/skip-build"

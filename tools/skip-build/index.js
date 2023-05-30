@@ -17,7 +17,6 @@ function hasProjectChanged(currentProject, lastDeployedCommit, latestCommit) {
 
 module.exports = {
   onPreBuild: ({ utils }) => {
-    console.log(process.env)
     const currentProject = process.env.PROJECT_NAME;
     const lastDeployedCommit = process.env.CACHED_COMMIT_REF;
     const latestCommit = 'HEAD';

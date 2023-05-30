@@ -1,4 +1,4 @@
-function projectChanged(currentProject, lastDeployedCommit, latestCommit) {
+function hasProjectChanged(currentProject, lastDeployedCommit, latestCommit) {
   const execSync = require('child_process').execSync;
   const getAffected = `npm run nx print-affected --base=${lastDeployedCommit} --head=${latestCommit}`;
   const output = execSync(getAffected).toString();
@@ -17,11 +17,11 @@ function projectChanged(currentProject, lastDeployedCommit, latestCommit) {
 
 module.exports = {
   onPreBuild: ({ utils }) => {
-    const currentProject = 'deliciousreverie';
-    console.log(process.env.CACHED_COMMIT_REF)
+    console.log(process.env)
+    const currentProject = process.env.PROJECT_NAME;
     const lastDeployedCommit = process.env.CACHED_COMMIT_REF;
     const latestCommit = 'HEAD';
-    const projectHasChanged = projectChanged(
+    const projectHasChanged = hasProjectChanged(
       currentProject,
       lastDeployedCommit,
       latestCommit

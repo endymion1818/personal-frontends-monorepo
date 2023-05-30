@@ -7,7 +7,8 @@
     "build": "nx build",
     "test": "nx test",
     "nx": "nx",
-    "postinstall": "node ./tools/scripts/patch-nx-cli.js"
+    "postinstall": "node ./tools/scripts/patch-nx-cli.js",
+    "affected:deploy": "nx affected --target=deploy"
   },
   "private": true,
   "devDependencies": {
@@ -15,11 +16,13 @@
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/svelte": "^2.0.1",
     "@astrojs/tailwind": "^3.0.1",
+    "@netlify-builder/deploy": "^5.0.0",
     "@nrwl/cli": "14.8.6",
     "@nrwl/eslint-plugin-nx": "14.8.6",
     "@nrwl/linter": "14.8.6",
     "@nrwl/nx-cloud": "^15.0.3",
     "@nrwl/workspace": "14.8.6",
+    "@nx/netlify": "^16.2.0",
     "@nxtensions/astro": "3.3.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
@@ -30,14 +33,15 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "npm": "^9.6.7",
     "nx": "14.8.6",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
+    "remove": "^0.1.5",
     "sass": "^1.58.0",
     "shiki": "^0.14.1",
     "svelte": "^3.55.1",
     "tailwindcss": "^3.2.6",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {}
+  }
 }

@@ -1,5 +1,6 @@
 ---
-import FeatureImage from '../images/roadhome.jpeg';
+import FeatureImage from '../images/roadhome.jpg';
+import MainImage from '../images/carousel-1.jpg';
 interface Props {
   menuItems: Array<{
     title: string;
@@ -19,8 +20,13 @@ const currentPath = pathname.slice(1).replaceAll('/', '');
 const isHomePage = currentPath === '';
 ---
 
-<div class:list={new Set(["relative bg-pattern", isHomePage && "lg:h-[80vh] flex flex-col justify-between"])}>
-  {isHomePage && (<img src={FeatureImage} alt="logo" class="absolute w-full" />)}
+<div 
+  class:list={new Set([
+    "relative bg-pattern", 
+    isHomePage && "h-[40rem] lg:h-[60rem]  bg-cover bg-no-repeat bg-left md:bg-right",
+    !isHomePage && "h-[20rem] xl:h-[40rem] bg-cover bg-no-repeat bg-center md:bg-top"
+  ])} 
+  style=`background-image: url(${isHomePage ? FeatureImage : MainImage})`)>
   <a
     href="#main"
     class="hidden mt-4 -top-20 focus-visible:top-0 skip-links btn btn-ghost w-40 border-secondary text-secondary p-4 normal-case"
@@ -80,12 +86,4 @@ const isHomePage = currentPath === '';
       </div>
     </header>
   </div>
-  {isHomePage && (<div class="container pb-6 max-w-lg relative mt-32 lg:mt-0">
-    <div class="alert alert-info flex-col">
-      <h1 class="text-xl font-bold">Why #FreeBabylon5?</h1>
-      <p class="w-full">Babylon 5 (or B5 for short) is a game-changing, ground breaking, emmy-award winning TV series.</p>
-      <p class="w-full">But it is in danger of becoming lost and forgotten.</p>
-    <p class="w-full">We are not going to let that happen. Please join us and help #FreeBabylon5</p>
-    </div>
-  </div>)}
 </div>

@@ -1,21 +1,14 @@
 ---
-import shiki from 'shiki'
+import { Code } from 'astro/components';
 
-const { code } = Astro.props
-
-let codeOutput
-
-await shiki.getHighlighter({
-  theme: 'monokai',
-}).then(highlighter => {
-  codeOutput = highlighter.codeToHtml(code, { lang: 'jsx' })
-})
+const { code, lang = 'js', theme = 'monokai' } = Astro.props;
 ---
-<div set:html={codeOutput} />
+
+<Code code={code} lang={lang} theme={theme} />
 
 <style is:global>
-  pre.shiki {
+  pre {
     overflow-y: auto;
-    padding: 2rem;
+    padding: 1.2rem;
   }
 </style>

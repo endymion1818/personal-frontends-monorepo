@@ -10,7 +10,9 @@
     "postinstall": "node ./tools/scripts/patch-nx-cli.js",
     "affected:deploy": "nx affected --target=deploy"
   },
-  "private": true,
+  "engines": {
+    "node": ">=18.16.0"
+  },
   "devDependencies": {
     "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^1.3.1",

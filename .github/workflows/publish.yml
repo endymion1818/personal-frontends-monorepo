@@ -8,23 +8,16 @@ jobs:
       deployments: write
     name: Cloudflare Publish
     steps:
-      - name: Checkout
+      - name: Checkout & Build
         uses: actions/checkout@v3
-
-      # Run a build step here if your project requires
-      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci
-
-      - run: npx nx affected --target=build --parallel=3
+      - run: npx nx affected -t build --parallel=3
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 623f207d2c9172f3aa3780e9900f213a
-          projectName: personal-fe-mono-dr-test
-          directory: dist/deliciousreverie
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          

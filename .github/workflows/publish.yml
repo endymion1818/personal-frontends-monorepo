@@ -6,7 +6,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
-    name: Publish to Cloudflare Pages
+    name: Cloudflare Publish
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -24,9 +24,9 @@ jobs:
       - run: npx nx affected -t build --parallel=3
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@1
+        uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ secrets.GH_PUBLISH_CLOUDFLARE }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 623f207d2c9172f3aa3780e9900f213a
           projectName: personal-fe-mono-dr-test
           directory: dist/deliciousreverie
